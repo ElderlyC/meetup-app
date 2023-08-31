@@ -1,15 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Initiator from "../Components/Initiator/Initiator";
+import UserIdentifiers from "../Components/UserIdentifiers/UserIdentifiers";
+import GreenButton from "../Components/GreenButton/GreenButton";
+import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
 
 function HostMeetupPage() {
+  const handleUserInfo = () => {
+    //set localStorage to UserIdentifiers props
+  };
   return (
     <div>
       HostMeetupPage (1)
-      <Initiator />
-      <button>
-        <Link to={"/Meetup-Settings"}>Go to Meetup Settings</Link>
-      </button>
+      <UserIdentifiers />
+      <div>
+        <GreenButton
+          url="/Meetup-Settings"
+          pageName="Host a New Meetup! (Meetup Settings)"
+          onClick={handleUserInfo}
+        />
+        <MeetupsListButton />
+      </div>
     </div>
   );
 }

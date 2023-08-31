@@ -15,15 +15,6 @@ function App() {
           <Route path="/Table" element={<TablePage />} />
           <Route path="/Meetups-List" element={<MeetupsListPage />} />
         </Routes>
-
-        <a
-          className="App-link"
-          href="https://youtube.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );

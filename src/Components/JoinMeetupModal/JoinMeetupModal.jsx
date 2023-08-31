@@ -1,11 +1,11 @@
 import React from "react";
-import Initiator from "../Initiator/Initiator";
+import UserIdentifiers from "../UserIdentifiers/UserIdentifiers";
 
 function JoinMeetupModal() {
   return (
     <div>
       JoinMeetupModal
-      <Initiator />
+      <UserIdentifiers />
     </div>
   );
 }

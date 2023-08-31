@@ -1,7 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function GreenButton() {
-  return <div>GreenButton</div>;
+function GreenButton({ url, pageName }) {
+  return (
+    <button>
+      <Link to={url}>{pageName}</Link>
+    </button>
+  );
 }
 
 export default GreenButton;

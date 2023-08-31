@@ -1,7 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function MeetupsListButton() {
-  return <div>MeetupsListButton</div>;
+  return (
+    <button>
+      <Link to={"/Meetups-List"}>Meetups List</Link>
+    </button>
+  );
 }
 
 export default MeetupsListButton;
