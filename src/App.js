@@ -12,7 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HostMeetupPage />} />
           <Route path="/Meetup-Settings" element={<MeetupSettingsPage />} />
-          <Route path="/Table" element={<TablePage />} />
+          <Route path="/:eventId" element={<TablePage />} />
           <Route path="/Meetups-List" element={<MeetupsListPage />} />
         </Routes>
       </header>

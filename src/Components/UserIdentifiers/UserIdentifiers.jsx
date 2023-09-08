@@ -85,8 +85,8 @@ function UserIdentifiers() {
     <div>
       UserIdentifiers
       <div>
-        <input placeholder="Name" />
-        <input placeholder="Meetup Title" />
+        <input placeholder="Enter Your Name" />
+        <input placeholder="Enter a Meetup Title" />
       </div>
       <div className={classes.iconBox}>
         <div className={classes.selectors}>
