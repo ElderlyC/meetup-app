@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 const SettingsForm = () => {
+  const today = new Date();
+  const todayFormatted = today.toISOString().split("T")[0];
+
+  // Calculate the previous Monday
+  const firstMonday = new Date(today);
+  const dayOfWeek = today.getDay();
+  const daysUntilMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
+  firstMonday.setDate(today.getDate() - daysUntilMonday);
+
+  const threeWeeksLater = new Date(firstMonday);
+  threeWeeksLater.setDate(threeWeeksLater.getDate() + 20);
+
+  // Format the date as a string in "yyyy-MM-dd" format
+  const firstMondayFormatted = firstMonday.toISOString().split("T")[0];
+  const threeWeeksLaterFormatted = threeWeeksLater.toISOString().split("T")[0];
+
+  const [dateRange, setDateRange] = useState({
+    type: "Full Week",
+    start: todayFormatted,
+    end: threeWeeksLaterFormatted,
+  });
+  const handleDateChange = (identifier, value) => {
+    console.log(identifier, value);
+    setDateRange((prev) => {
+      return { ...prev, [identifier]: value };
+    });
+  };
+
   return (
     <>
       <form>
@@ -21,7 +49,10 @@ const SettingsForm = () => {
           <legend>Specify the range of days to choose from</legend>
           <div>
             <label>Selection Type</label>
-            <select>
+            <select
+              value={dateRange.type}
+              onChange={(event) => handleDateChange("type", event.target.value)}
+            >
               <option>Full Week</option>
               <option>Weekdays</option>
               <option>Weekend</option>
@@ -31,12 +62,22 @@ const SettingsForm = () => {
 
           <div>
             <label>Start of Selection Range</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={dateRange.start}
+              onChange={(event) =>
+                handleDateChange("start", event.target.value)
+              }
+            />
           </div>
 
           <div>
             <label>End of Selection Range</label>
-            <input type="date" />
+            <input
+              type="date"
+              value={dateRange.end}
+              onChange={(event) => handleDateChange("end", event.target.value)}
+            />
           </div>
         </fieldset>
         <div>
