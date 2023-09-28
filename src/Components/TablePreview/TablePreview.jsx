@@ -15,7 +15,7 @@ const TablePreview = () => {
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   return (
     <div className={classes.container}>
-      TablePreview
+      Meetup Table Preview
       <div className={classes.table}>
         {dayHeaders.map((cell) => (
           <button key={cell} className={classes.dayHeader}>

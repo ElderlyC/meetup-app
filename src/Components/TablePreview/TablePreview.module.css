@@ -7,9 +7,18 @@
 /* Header styles */
 .dayHeader {
   background-color: transparent;
-  color: aliceblue;
+  color: black;
   border: 0px;
   width: 10%; /* Adjust the button width as needed */
   height: 40px; /* Adjust the button height as needed */
   font-size: 16px; /* Adjust font size as needed */
+}
+
+.container {
+  background-color: azure;
+  border: 3px solid rgb(28, 116, 218);
+  border-radius: 10px;
+  padding: 10px 0px;
+  color: rgb(230, 110, 11);
+  min-width: 50%;
 }
