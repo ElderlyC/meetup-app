@@ -6,7 +6,7 @@ import UserInvite from "../Components/UserInvite/UserInvite";
 import classes from "./MeetupSettings.module.css";
 
 function MeetupSettingsPage() {
-  const [tableDates, setTableDates] = useState();
+  const [tableDates, setTableDates] = useState("test");
   return (
     <div className={classes.container}>
       <div className={classes.leftCol}>
@@ -18,7 +18,7 @@ function MeetupSettingsPage() {
         </button>
       </div>
       <div className={classes.rightCol}>
-        <TablePreview table={tableDates} />
+        <TablePreview dateData={tableDates} />
       </div>
     </div>
   );

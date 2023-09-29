@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./TablePreview.module.css";
 
-const TablePreview = () => {
+const TablePreview = ({ dateData }) => {
+  console.log(dateData);
   const DUMMY_TABLE = [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17];
   const columns = 7; // Number of columns
 
@@ -25,7 +26,11 @@ const TablePreview = () => {
         {tableMatrix.map((row, rowIndex) => (
           <div key={rowIndex} className={classes.rows}>
             {row.map((cell) => (
-              <button key={cell} className={classes.tableButton}>
+              <button
+                key={cell}
+                className={classes.tableButton}
+                style={{ color: cell % 2 === 0 ? "red" : "green" }}
+              >
                 {cell}
               </button>
             ))}
