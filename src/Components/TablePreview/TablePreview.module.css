@@ -3,6 +3,7 @@
   width: 10%; /* Adjust the button width as needed */
   height: 40px; /* Adjust the button height as needed */
   font-size: 16px; /* Adjust font size as needed */
+  font-weight: bold;
 }
 /* Header styles */
 .dayHeader {

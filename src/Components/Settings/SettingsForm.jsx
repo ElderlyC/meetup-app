@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const SettingsForm = () => {
+const SettingsForm = ({ onDateChange }) => {
   const today = new Date();
   const todayFormatted = today.toISOString().split("T")[0];
 
@@ -28,6 +28,10 @@ const SettingsForm = () => {
       return { ...prev, [identifier]: value };
     });
   };
+
+  useEffect(() => {
+    onDateChange(dateRange);
+  }, [dateRange]);
 
   return (
     <>

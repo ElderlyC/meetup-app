@@ -29,7 +29,9 @@ const TablePreview = ({ dateData }) => {
               <button
                 key={cell}
                 className={classes.tableButton}
-                style={{ color: cell % 2 === 0 ? "red" : "green" }}
+                style={{
+                  backgroundColor: cell > 5 && cell < 10 ? "" : "darkgrey",
+                }}
               >
                 {cell}
               </button>
