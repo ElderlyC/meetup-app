@@ -22,3 +22,11 @@
   padding: 10px 0px;
   color: rgb(230, 110, 11);
 }
+
+.monthLabel {
+  font-size: 12px;
+  position: absolute;
+  margin-top: -30px;
+  margin-left: -20px;
+  color: rgb(230, 110, 11);
+}

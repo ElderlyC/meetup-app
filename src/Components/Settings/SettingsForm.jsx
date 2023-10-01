@@ -14,7 +14,6 @@ const SettingsForm = ({ onDateChange }) => {
   threeWeeksLater.setDate(threeWeeksLater.getDate() + 20);
 
   // Format the date as a string in "yyyy-MM-dd" format
-  const firstMondayFormatted = firstMonday.toISOString().split("T")[0];
   const threeWeeksLaterFormatted = threeWeeksLater.toISOString().split("T")[0];
 
   const [dateRange, setDateRange] = useState({
@@ -31,7 +30,7 @@ const SettingsForm = ({ onDateChange }) => {
 
   useEffect(() => {
     onDateChange(dateRange);
-  }, [dateRange]);
+  }, [dateRange, onDateChange]);
 
   return (
     <>
