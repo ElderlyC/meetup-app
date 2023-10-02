@@ -7,18 +7,17 @@ const TablePreview = ({ dateData }) => {
 
   const dateTable = [];
   const currentDate = new Date(dateData?.start);
-  // selection should be array index based
-  const startSelection = currentDate.getDate();
   const startDayNum = currentDate.getDay();
   const daysUntilMonday = startDayNum === 0 ? 6 : startDayNum - 1;
+  // ^ index of the first selected day in dateTable
   currentDate.setDate(currentDate.getDate() - daysUntilMonday);
   const firstMonth = currentDate.toLocaleDateString("en-GB", { month: "long" });
 
   const endDate = new Date(dateData?.end);
   const secondMonth = endDate.toLocaleDateString("en-GB", { month: "long" });
-  const endSelection = endDate.getDate();
   const endDayNum = endDate.getDay();
   const daysUntilSunday = endDayNum === 0 ? 0 : 7 - endDayNum;
+  // ^ index (negative) of the end selected day in dateTable
   endDate.setDate(endDate.getDate() + daysUntilSunday);
 
   while (currentDate <= endDate) {
@@ -28,6 +27,7 @@ const TablePreview = ({ dateData }) => {
 
   // add in the days mon - start, end - sun
   console.log(dateTable);
+  console.log(dateTable.slice(daysUntilMonday, -1 * daysUntilSunday));
 
   const columns = 7; // Number of columns
 
@@ -58,9 +58,10 @@ const TablePreview = ({ dateData }) => {
                 className={classes.tableButton}
                 style={{
                   backgroundColor:
-                    cell >= startSelection && cell <= endSelection
-                      ? ""
-                      : "darkgrey",
+                    (rowIndex === 0 && index < daysUntilMonday) ||
+                    (rowIndex === rows - 1 && index > 6 - daysUntilSunday)
+                      ? "darkgrey"
+                      : "",
                   position: "relative",
                 }}
               >
@@ -69,6 +70,9 @@ const TablePreview = ({ dateData }) => {
                 )}
                 {cell === 1 && (
                   <span className={classes.monthLabel}>{secondMonth}</span>
+                )}
+                {cell === 1 && rowIndex >= 5 && (
+                  <span className={classes.monthLabel}>test</span>
                 )}
                 {cell}
               </button>
