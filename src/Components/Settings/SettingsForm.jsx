@@ -1,37 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import GreenButton from "../GreenButton/GreenButton";
+import DateSelection from "./DateSelection";
 
 const SettingsForm = ({ onDateChange }) => {
-  const today = new Date();
-  const todayFormatted = today.toISOString().split("T")[0];
-
-  // Calculate the previous Monday
-  const firstMonday = new Date(today);
-  const dayOfWeek = today.getDay();
-  const daysUntilMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1;
-  firstMonday.setDate(today.getDate() - daysUntilMonday);
-
-  const threeWeeksLater = new Date(firstMonday);
-  threeWeeksLater.setDate(threeWeeksLater.getDate() + 20);
-
-  // Format the date as a string in "yyyy-MM-dd" format
-  const threeWeeksLaterFormatted = threeWeeksLater.toISOString().split("T")[0];
-
-  const [dateRange, setDateRange] = useState({
-    type: "Full Week",
-    start: todayFormatted,
-    end: threeWeeksLaterFormatted,
-  });
-  const handleDateChange = (identifier, value) => {
-    console.log(identifier, value);
-    setDateRange((prev) => {
-      return { ...prev, [identifier]: value };
-    });
-  };
-
-  useEffect(() => {
-    onDateChange(dateRange);
-  }, [dateRange, onDateChange]);
-
   return (
     <>
       <form>
@@ -48,41 +19,9 @@ const SettingsForm = ({ onDateChange }) => {
           <label>Location</label>
           <input />
         </div>
-        <fieldset>
-          <legend>Specify the range of days to choose from</legend>
-          <div>
-            <label>Selection Type</label>
-            <select
-              value={dateRange.type}
-              onChange={(event) => handleDateChange("type", event.target.value)}
-            >
-              <option>Full Week</option>
-              <option>Weekdays</option>
-              <option>Weekend</option>
-              <option>Long Weekend (FSS)</option>
-            </select>
-          </div>
 
-          <div>
-            <label>Start of Selection Range</label>
-            <input
-              type="date"
-              value={dateRange.start}
-              onChange={(event) =>
-                handleDateChange("start", event.target.value)
-              }
-            />
-          </div>
+        <DateSelection onDateChange={onDateChange} />
 
-          <div>
-            <label>End of Selection Range</label>
-            <input
-              type="date"
-              value={dateRange.end}
-              onChange={(event) => handleDateChange("end", event.target.value)}
-            />
-          </div>
-        </fieldset>
         <div>
           <label>Meetup Description</label>
           <textarea
@@ -91,7 +30,7 @@ const SettingsForm = ({ onDateChange }) => {
             rows="3"
           ></textarea>
         </div>
-        <button>Done!</button>
+        <GreenButton pageName={"Done"}>Done!</GreenButton>
       </form>
     </>
   );

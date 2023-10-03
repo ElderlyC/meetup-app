@@ -2,9 +2,6 @@ import React from "react";
 import classes from "./TablePreview.module.css";
 
 const TablePreview = ({ dateData }) => {
-  console.log(dateData);
-  console.log();
-
   const dateTable = [];
   const currentDate = new Date(dateData?.start);
   const startDayNum = currentDate.getDay();
@@ -25,9 +22,13 @@ const TablePreview = ({ dateData }) => {
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  // add in the days mon - start, end - sun
-  console.log(dateTable);
-  console.log(dateTable.slice(daysUntilMonday, -1 * daysUntilSunday));
+  // // add in the days mon - start, end - sun
+  // console.log(dateTable);
+
+  // //the select slice
+  // console.log(
+  //   dateTable.slice(daysUntilMonday, dateTable.length - daysUntilSunday)
+  // );
 
   const columns = 7; // Number of columns
 
@@ -39,6 +40,7 @@ const TablePreview = ({ dateData }) => {
   );
 
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
   return (
     <div className={classes.container}>
       Meetup Table Preview
@@ -52,31 +54,43 @@ const TablePreview = ({ dateData }) => {
         </div>
         {tableMatrix.map((row, rowIndex) => (
           <div key={rowIndex} className={classes.rows}>
-            {row.map((cell, index) => (
-              <button
-                key={cell}
-                className={classes.tableButton}
-                style={{
-                  backgroundColor:
+            {row.map((cell, index) => {
+              const disableByType =
+                (dateData.type === "Weekend" &&
+                  (index === 0 ||
+                    index === 1 ||
+                    index === 2 ||
+                    index === 3 ||
+                    index === 4)) ||
+                (dateData.type === "Weekdays" &&
+                  (index === 5 || index === 6)) ||
+                (dateData.type === "Long Weekend (FSS)" &&
+                  (index === 0 || index === 1 || index === 2 || index === 3));
+              return (
+                <button
+                  key={cell}
+                  className={classes.tableButton}
+                  disabled={
                     (rowIndex === 0 && index < daysUntilMonday) ||
-                    (rowIndex === rows - 1 && index > 6 - daysUntilSunday)
-                      ? "darkgrey"
-                      : "",
-                  position: "relative",
-                }}
-              >
-                {index === 0 && rowIndex === 0 && (
-                  <span className={classes.monthLabel}>{firstMonth}</span>
-                )}
-                {cell === 1 && (
-                  <span className={classes.monthLabel}>{secondMonth}</span>
-                )}
-                {cell === 1 && rowIndex >= 5 && (
-                  <span className={classes.monthLabel}>test</span>
-                )}
-                {cell}
-              </button>
-            ))}
+                    (rowIndex === rows - 1 && index > 6 - daysUntilSunday) ||
+                    disableByType
+                      ? true
+                      : false
+                  }
+                  style={{
+                    position: "relative",
+                  }}
+                >
+                  {index === 0 && rowIndex === 0 && (
+                    <span className={classes.monthLabel}>{firstMonth}</span>
+                  )}
+                  {cell === 1 && (
+                    <span className={classes.monthLabel}>{secondMonth}</span>
+                  )}
+                  {cell}
+                </button>
+              );
+            })}
           </div>
         ))}
       </div>
