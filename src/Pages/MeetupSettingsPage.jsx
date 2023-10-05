@@ -7,16 +7,24 @@ import classes from "./MeetupSettings.module.css";
 
 function MeetupSettingsPage() {
   const [tableDates, setTableDates] = useState();
+  const [title, setTitle] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
     setTableDates(enteredDateData);
+  };
+
+  const titleChangeHandler = (enteredTitle) => {
+    setTitle(enteredTitle);
   };
   return (
     <div className={classes.container}>
       <div className={classes.leftCol}>
         MeetupSettingsPage (2)
-        <SettingsForm onDateChange={dateChangeHandler} />
-        <UserInvite />
+        <SettingsForm
+          onTitleChange={titleChangeHandler}
+          onDateChange={dateChangeHandler}
+        />
+        <UserInvite title={title} />
         <button>
           <Link to={"/Table"}>Go to Table</Link>
         </button>

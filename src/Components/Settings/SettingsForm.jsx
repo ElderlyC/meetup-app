@@ -1,14 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import GreenButton from "../GreenButton/GreenButton";
 import DateSelection from "./DateSelection";
 
-const SettingsForm = ({ onDateChange }) => {
+const SettingsForm = ({ onDateChange, onTitleChange }) => {
+  const storedTitle = localStorage.getItem("link");
+
+  const [title, setTitle] = useState();
+  const [blur, setBlur] = useState(false);
+
+  const handleTitleInputChange = (e) => {
+    onTitleChange(e.target.value);
+  };
+
+  const handleBlur = () => {
+    setBlur(true);
+  };
+
+  useEffect(() => {
+    if (storedTitle) {
+      handleBlur();
+      onTitleChange(storedTitle);
+      setTitle(storedTitle);
+    }
+  }, [storedTitle, onTitleChange]);
+
   return (
     <>
-      <form>
+      <form id="settings-form">
         <div>
           <label>Meetup Title</label>
-          <input />
+          <input
+            id="title"
+            onChange={handleTitleInputChange}
+            value={title}
+            onBlur={handleBlur}
+            disabled={blur}
+            required
+          />
         </div>
         <div>
           <label>Start Time</label>

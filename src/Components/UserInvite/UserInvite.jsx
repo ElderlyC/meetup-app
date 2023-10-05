@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const UserInvite = () => {
-  const [link, setLink] = useState();
+const UserInvite = ({ title }) => {
+  const [link, setLink] = useState("");
+  const [randomNumber, setRandomNumber] = useState("");
 
   const handleCopy = () => {
     const inviteLink = document.getElementById("link").value;
@@ -9,6 +10,16 @@ const UserInvite = () => {
     // have another way of indicating copy worked !
     // alert("Link copied to clipboard: " + inviteLink);
   };
+
+  useEffect(() => {
+    setLink(() => {
+      return title + randomNumber || randomNumber;
+    });
+  }, [title, randomNumber]);
+
+  useEffect(() => {
+    setRandomNumber(Math.floor(Math.random() * 10000));
+  }, []);
 
   return (
     <div>
@@ -20,6 +31,7 @@ const UserInvite = () => {
           readOnly={true}
           placeholder="Hover to reveal link"
           value={link}
+          required
         />
         <button onClick={handleCopy}>Copy</button>
       </div>
