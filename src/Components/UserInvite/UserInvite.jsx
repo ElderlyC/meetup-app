@@ -1,14 +1,24 @@
 import React, { useEffect, useState } from "react";
+import classes from "./UserInvite.module.css";
 
 const UserInvite = ({ title }) => {
   const [link, setLink] = useState("");
   const [randomNumber, setRandomNumber] = useState("");
 
+  const input = document.getElementById("link");
+
   const handleCopy = () => {
-    const inviteLink = document.getElementById("link").value;
-    navigator.clipboard.writeText(inviteLink);
-    // have another way of indicating copy worked !
-    // alert("Link copied to clipboard: " + inviteLink);
+    navigator.clipboard.writeText(link);
+    input.placeholder = "Copied to Clipboard!";
+  };
+
+  const handleMouseHover = () => {
+    input.value = link; // Set the placeholder to the current value
+  };
+
+  const handleMouseLeave = () => {
+    input.value = "";
+    input.placeholder = "Hover to reveal link"; // Set the placeholder to the current value
   };
 
   useEffect(() => {
@@ -26,13 +36,18 @@ const UserInvite = ({ title }) => {
       UserInvite
       <p>Invite Your Friends!</p>
       <div>
-        <input
-          id="link"
-          readOnly={true}
-          placeholder="Hover to reveal link"
-          value={link}
-          required
-        />
+        <div className={classes.inputContainer}>
+          <input
+            className={classes.link}
+            id="link"
+            readOnly={true}
+            placeholder="Hover to reveal link"
+            onMouseEnter={handleMouseHover}
+            onMouseLeave={handleMouseLeave}
+            required
+          />
+        </div>
+
         <button onClick={handleCopy}>Copy</button>
       </div>
     </div>
