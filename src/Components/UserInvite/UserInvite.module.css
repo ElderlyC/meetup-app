@@ -5,11 +5,3 @@
   font-size: 16px;
   position: relative;
 }
-
-.link::placeholder {
-  color: #999; /* Default color for the placeholder */
-}
-
-.link:hover::placeholder {
-  color: #333; /* Color for the text when hovered */
-}
