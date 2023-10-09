@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import GreenButton from "../GreenButton/GreenButton";
-import DateSelection from "./DateSelection";
+import GreenButton from "../../GreenButton/GreenButton";
+import DateSelection from "../DateSelection/DateSelection";
 
 const SettingsForm = ({ onDateChange, onTitleChange }) => {
   const storedTitle = localStorage.getItem("link");

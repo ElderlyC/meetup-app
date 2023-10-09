@@ -1,5 +1,5 @@
 import React from "react";
-import UserIdentifiers from "../UserIdentifiers/UserIdentifiers";
+import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 
 function JoinMeetupModal() {
   return (
