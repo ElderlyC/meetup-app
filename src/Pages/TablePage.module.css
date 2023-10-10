@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.col1 {
+  margin: 20px;
+  min-width: 25%;
+}
+.col2 {
+  margin: 20px;
+  min-width: 25%;
+}
+.col3 {
+  margin: 20px;
+  min-width: 25%;
+}

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SettingsForm from "../Components/SettingsPage/SettingsForm/SettingsForm";
-import TablePreview from "../Components/TablePreview/TablePreview";
-import UserInvite from "../Components/UserInvite/UserInvite";
+import TablePreview from "../Components/SettingsPage/TablePreview/TablePreview";
+import UserInvite from "../Components/SettingsPage/UserInvite/UserInvite";
 import classes from "./MeetupSettings.module.css";
 
 function MeetupSettingsPage() {
