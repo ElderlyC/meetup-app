@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import classes from "./UserInvite.module.css";
 
-const UserInvite = ({ title }) => {
+const UserInvite = ({ title, saveLink }) => {
   const [link, setLink] = useState("");
-  const [randomNumber, setRandomNumber] = useState("");
+  const [randomNumber, setRandomNumber] = useState(0);
 
   const input = document.getElementById("link");
 
@@ -22,10 +22,10 @@ const UserInvite = ({ title }) => {
   };
 
   useEffect(() => {
-    setLink(() => {
-      return title + randomNumber || randomNumber;
-    });
-  }, [title, randomNumber]);
+    const newLink = title + randomNumber || randomNumber;
+    setLink(newLink);
+    saveLink(newLink);
+  }, [title, randomNumber, saveLink]);
 
   useEffect(() => {
     setRandomNumber(Math.floor(Math.random() * 10000));
@@ -44,7 +44,6 @@ const UserInvite = ({ title }) => {
             placeholder="Hover to reveal link"
             onMouseEnter={handleMouseHover}
             onMouseLeave={handleMouseLeave}
-            required
           />
         </div>
 

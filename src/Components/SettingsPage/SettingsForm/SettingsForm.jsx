@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
-import GreenButton from "../../GreenButton/GreenButton";
+import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 
-const SettingsForm = ({ onDateChange, onTitleChange }) => {
-  const storedTitle = localStorage.getItem("link");
+const SettingsForm = ({ onDateChange, onTitleChange, link }) => {
+  const storedTitle = localStorage.getItem("userInfo");
+  const initialTitle = storedTitle ? JSON.parse(storedTitle).title : "";
 
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState(initialTitle);
   const [blur, setBlur] = useState(false);
 
   const handleTitleInputChange = (e) => {
     onTitleChange(e.target.value);
+    setTitle(e.target.value);
   };
 
   const handleBlur = () => {
@@ -17,12 +19,12 @@ const SettingsForm = ({ onDateChange, onTitleChange }) => {
   };
 
   useEffect(() => {
-    if (storedTitle) {
+    if (initialTitle) {
       handleBlur();
-      onTitleChange(storedTitle);
-      setTitle(storedTitle);
+      onTitleChange(initialTitle);
+      setTitle(initialTitle);
     }
-  }, [storedTitle, onTitleChange]);
+  }, [initialTitle, onTitleChange]);
 
   return (
     <>
@@ -58,7 +60,13 @@ const SettingsForm = ({ onDateChange, onTitleChange }) => {
             rows="3"
           ></textarea>
         </div>
-        <GreenButton pageName={"Done"}>Done!</GreenButton>
+        {title ? (
+          <GreenButton url={`../${link}`} pageName={"Done"}>
+            Done!
+          </GreenButton>
+        ) : (
+          <p>You need a title!</p>
+        )}
       </form>
     </>
   );

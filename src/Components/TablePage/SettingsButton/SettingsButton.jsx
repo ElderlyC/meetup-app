@@ -7,7 +7,7 @@ const SettingsButton = () => {
       SettingsButton
       <button>
         <img alt="settings cog" />
-        <Link to={"/Meetups-List"}>Meetups List</Link>
+        <Link to={"/Meetup-Settings"}>Settings</Link>
       </button>
     </div>
   );

@@ -8,6 +8,7 @@ import classes from "./MeetupSettings.module.css";
 function MeetupSettingsPage() {
   const [tableDates, setTableDates] = useState();
   const [title, setTitle] = useState();
+  const [link, setLink] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
     setTableDates(enteredDateData);
@@ -16,6 +17,11 @@ function MeetupSettingsPage() {
   const titleChangeHandler = (enteredTitle) => {
     setTitle(enteredTitle);
   };
+
+  const handleSaveLink = (link) => {
+    setLink(link);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.leftCol}>
@@ -23,8 +29,9 @@ function MeetupSettingsPage() {
         <SettingsForm
           onTitleChange={titleChangeHandler}
           onDateChange={dateChangeHandler}
+          link={link}
         />
-        <UserInvite title={title} />
+        <UserInvite title={title} saveLink={handleSaveLink} />
         <button>
           <Link to={"/Table"}>Go to Table</Link>
         </button>

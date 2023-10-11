@@ -1,0 +1,24 @@
+.icon {
+  width: 100px;
+  height: 100px;
+  transform: scale(0.4);
+  border-radius: 20px;
+  border: 4px solid black;
+  background-color: lavender;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* UserInfo.module.css */
+.personalIcon {
+  display: flex;
+  align-items: center;
+}
+
+.infoBox {
+}
+
+.username {
+  text-align: left;
+}
