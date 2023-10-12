@@ -17,6 +17,7 @@
 }
 
 .infoBox {
+  border: 4px solid black;
 }
 
 .username {

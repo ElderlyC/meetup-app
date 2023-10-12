@@ -3,8 +3,8 @@ import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 
 const SettingsForm = ({ onDateChange, onTitleChange, link }) => {
-  const storedTitle = localStorage.getItem("userInfo");
-  const initialTitle = storedTitle ? JSON.parse(storedTitle).title : "";
+  const storedInfo = localStorage.getItem("userInfo");
+  const initialTitle = storedInfo ? JSON.parse(storedInfo).title : "";
 
   const [title, setTitle] = useState(initialTitle);
   const [blur, setBlur] = useState(false);
@@ -15,12 +15,13 @@ const SettingsForm = ({ onDateChange, onTitleChange, link }) => {
   };
 
   const handleBlur = () => {
-    setBlur(true);
+    if (title !== "" || initialTitle !== "") {
+      setBlur(true);
+    }
   };
 
   useEffect(() => {
     if (initialTitle) {
-      handleBlur();
       onTitleChange(initialTitle);
       setTitle(initialTitle);
     }
