@@ -1,31 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 
-const SettingsForm = ({ onDateChange, onTitleChange, link }) => {
-  const storedInfo = localStorage.getItem("userInfo");
-  const initialTitle = storedInfo ? JSON.parse(storedInfo).title : "";
-
-  const [title, setTitle] = useState(initialTitle);
+const SettingsForm = ({ onDateChange, onTitleChange, link, title }) => {
   const [blur, setBlur] = useState(false);
 
   const handleTitleInputChange = (e) => {
     onTitleChange(e.target.value);
-    setTitle(e.target.value);
   };
 
   const handleBlur = () => {
-    if (title !== "" || initialTitle !== "") {
+    if (title !== "") {
       setBlur(true);
     }
   };
-
-  useEffect(() => {
-    if (initialTitle) {
-      onTitleChange(initialTitle);
-      setTitle(initialTitle);
-    }
-  }, [initialTitle, onTitleChange]);
 
   return (
     <>

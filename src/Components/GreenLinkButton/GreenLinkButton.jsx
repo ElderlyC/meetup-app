@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classes from "./GreenLinkButton.module.css";
 
-function GreenLinkButton({ url, pageName, onClick }) {
+function GreenLinkButton({ url, pageName, onClick, disable }) {
   return (
     <button onClick={onClick} className={classes["big-green-button"]}>
-      <Link to={url}>{pageName}</Link>
+      <Link to={disable ? "" : url}>{pageName}</Link>
     </button>
   );
 }

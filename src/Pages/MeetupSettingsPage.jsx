@@ -6,8 +6,11 @@ import UserInvite from "../Components/SettingsPage/UserInvite/UserInvite";
 import classes from "./MeetupSettings.module.css";
 
 function MeetupSettingsPage() {
+  const storedInfo = localStorage.getItem("userInfo");
+  const initialTitle = storedInfo ? JSON.parse(storedInfo).title : "";
+
   const [tableDates, setTableDates] = useState();
-  const [title, setTitle] = useState();
+  const [title, setTitle] = useState(initialTitle);
   const [link, setLink] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
@@ -30,6 +33,7 @@ function MeetupSettingsPage() {
           onTitleChange={titleChangeHandler}
           onDateChange={dateChangeHandler}
           link={link}
+          title={title}
         />
         <UserInvite title={title} saveLink={handleSaveLink} />
         <button>

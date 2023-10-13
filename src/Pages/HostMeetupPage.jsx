@@ -5,14 +5,24 @@ import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton
 
 function HostMeetupPage() {
   const [userData, setUserData] = useState();
+  const [inputsEmpty, setInputsEmpty] = useState();
+  const [clicked, setClicked] = useState();
 
   const handleDataChange = (data) => {
     setUserData(data);
+    if (data?.title === "" || data?.name === "") {
+      setInputsEmpty(true);
+    } else {
+      setInputsEmpty(false);
+    }
   };
+
   const handleInfoSave = () => {
+    setClicked(true);
     console.log("Set storage with userData", userData);
     localStorage.setItem("userInfo", JSON.stringify(userData));
   };
+
   return (
     <div>
       HostMeetupPage (1)
@@ -21,8 +31,12 @@ function HostMeetupPage() {
         url="/Meetup-Settings"
         pageName="Host a New Meetup! (Meetup Settings)"
         onClick={handleInfoSave}
+        disable={inputsEmpty}
       />
       <MeetupsListButton />
+      {inputsEmpty && clicked && (
+        <p>Remember to input both a name and a title!</p>
+      )}
     </div>
   );
 }
