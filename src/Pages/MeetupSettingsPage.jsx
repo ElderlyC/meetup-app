@@ -12,6 +12,7 @@ function MeetupSettingsPage() {
   const [tableDates, setTableDates] = useState();
   const [title, setTitle] = useState(initialTitle);
   const [link, setLink] = useState();
+  const [showInvite, setShowInvite] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
     setTableDates(enteredDateData);
@@ -25,6 +26,10 @@ function MeetupSettingsPage() {
     setLink(link);
   };
 
+  const handleShowInvite = (show) => {
+    setShowInvite(show);
+  };
+
   return (
     <div className={classes.container}>
       <div className={classes.leftCol}>
@@ -34,8 +39,9 @@ function MeetupSettingsPage() {
           onDateChange={dateChangeHandler}
           link={link}
           title={title}
+          showInvite={handleShowInvite}
         />
-        <UserInvite title={title} saveLink={handleSaveLink} />
+        {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
         <button>
           <Link to={"/Table"}>Go to Table</Link>
         </button>

@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 
-const SettingsForm = ({ onDateChange, onTitleChange, link, title }) => {
+const SettingsForm = ({
+  onDateChange,
+  onTitleChange,
+  link,
+  title,
+  showInvite,
+}) => {
   const [blur, setBlur] = useState(false);
 
   const handleTitleInputChange = (e) => {
@@ -13,6 +19,7 @@ const SettingsForm = ({ onDateChange, onTitleChange, link, title }) => {
     if (title !== "") {
       setBlur(true);
     }
+    showInvite(true);
   };
 
   return (
@@ -26,6 +33,7 @@ const SettingsForm = ({ onDateChange, onTitleChange, link, title }) => {
             value={title}
             onBlur={handleBlur}
             disabled={blur}
+            autoFocus
             required
           />
         </div>

@@ -33,7 +33,6 @@ const UserInvite = ({ title, saveLink }) => {
 
   return (
     <div>
-      UserInvite
       <p>Invite Your Friends!</p>
       <div>
         <div className={classes.inputContainer}>
