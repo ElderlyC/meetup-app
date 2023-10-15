@@ -15,6 +15,10 @@ const SettingsForm = ({
     onTitleChange(e.target.value);
   };
 
+  const sendTableData = () => {
+    // send all data, link, etc to firebase
+  };
+
   const handleBlur = () => {
     if (title !== "") {
       setBlur(true);

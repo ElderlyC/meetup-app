@@ -6,7 +6,7 @@ function MeetupsListPage() {
     <div>
       MeetupsListPage (4)
       <button>
-        <Link to={"/"}>Go back to Host Page</Link>
+        <Link to={"/"}>Organise a NEW Meetup!</Link>
       </button>
     </div>
   );
