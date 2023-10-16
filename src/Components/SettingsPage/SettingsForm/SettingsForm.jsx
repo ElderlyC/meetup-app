@@ -8,6 +8,7 @@ const SettingsForm = ({
   link,
   title,
   showInvite,
+  tableDates,
 }) => {
   const [blur, setBlur] = useState(false);
 
@@ -17,6 +18,22 @@ const SettingsForm = ({
 
   const sendTableData = () => {
     // send all data, link, etc to firebase
+    const data = { id: link, title, tableDates };
+    fetch("https://meetup-mannaja-default-rtdb.firebaseio.com/table.json", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Server responds with {name: randomId}
+        console.log("Response from server:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending POST request:", error);
+      });
   };
 
   const handleBlur = () => {
@@ -62,7 +79,11 @@ const SettingsForm = ({
           ></textarea>
         </div>
         {title ? (
-          <GreenButton url={`../${link}`} pageName={"Done"}>
+          <GreenButton
+            url={`../${link}`}
+            pageName={"Done"}
+            onClick={sendTableData}
+          >
             Done!
           </GreenButton>
         ) : (

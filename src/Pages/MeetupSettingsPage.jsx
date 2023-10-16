@@ -40,6 +40,7 @@ function MeetupSettingsPage() {
           link={link}
           title={title}
           showInvite={handleShowInvite}
+          tableDates={tableDates}
         />
         {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
         <button>
