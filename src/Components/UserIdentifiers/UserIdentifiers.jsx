@@ -94,15 +94,14 @@ function UserIdentifiers({ onChangeData, titleDisabled, initialTitle }) {
   }, [colourNum, faceNum, name, title]);
 
   useEffect(() => {
-    console.log(data);
     onChangeData(data);
   }, [data, onChangeData]);
 
   return (
     <div>
-      UserIdentifiers
       <div>
         <input
+          id="name"
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}
           value={name}

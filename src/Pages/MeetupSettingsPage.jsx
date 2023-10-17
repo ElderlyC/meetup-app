@@ -8,6 +8,7 @@ import classes from "./MeetupSettings.module.css";
 function MeetupSettingsPage() {
   const storedInfo = localStorage.getItem("userInfo");
   const initialTitle = storedInfo ? JSON.parse(storedInfo).title : "";
+  const host = storedInfo ? JSON.parse(storedInfo).name : "";
 
   const [tableDates, setTableDates] = useState();
   const [title, setTitle] = useState(initialTitle);
@@ -41,6 +42,7 @@ function MeetupSettingsPage() {
           title={title}
           showInvite={handleShowInvite}
           tableDates={tableDates}
+          host={host}
         />
         {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
         <button>

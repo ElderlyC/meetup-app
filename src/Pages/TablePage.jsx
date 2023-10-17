@@ -20,25 +20,28 @@ function TablePage() {
   return (
     <>
       TablePage (3) {params.eventId}
-      <div className={classes.container}>
-        <div className={classes.col1}>
-          <UserInfo data={userInfo} />
-          <MeetupsListButton />
-        </div>
-        <div className={classes.col2}>
-          {!userInfo && <JoinMeetupModal titleDisabled={true} />}
-
-          <TableHeader />
-          <DateTable />
-        </div>
-        <div className={classes.col3}>
-          <SettingsButton />
-          <MembersList />
-          <MeetupDay />
-        </div>
-        {/* <Rocks />
+      {!userInfo && (
+        <JoinMeetupModal titleDisabled={true} link={params.eventId} />
+      )}
+      {userInfo && (
+        <div className={classes.container}>
+          <div className={classes.col1}>
+            <UserInfo data={userInfo} />
+            <MeetupsListButton />
+          </div>
+          <div className={classes.col2}>
+            <TableHeader />
+            <DateTable />
+          </div>
+          <div className={classes.col3}>
+            <SettingsButton />
+            <MembersList />
+            <MeetupDay />
+          </div>
+          {/* <Rocks />
     <TestCounter /> */}
-      </div>
+        </div>
+      )}
     </>
   );
 }

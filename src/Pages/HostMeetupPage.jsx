@@ -25,7 +25,7 @@ function HostMeetupPage() {
 
   return (
     <div>
-      HostMeetupPage (1)
+      Host your Meetup
       <UserIdentifiers onChangeData={handleDataChange} titleDisabled={false} />
       <GreenLinkButton
         url="/Meetup-Settings"
@@ -33,7 +33,9 @@ function HostMeetupPage() {
         onClick={handleInfoSave}
         disable={inputsEmpty}
       />
-      <MeetupsListButton />
+      <div>
+        <MeetupsListButton />
+      </div>
       {inputsEmpty && clicked && (
         <p>Remember to input both a name and a title!</p>
       )}
