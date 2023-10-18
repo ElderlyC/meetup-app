@@ -19,7 +19,13 @@ const SettingsForm = ({
 
   const sendTableData = () => {
     // send all data, link, etc to firebase
-    const data = { host, title, tableDates };
+    const data = {
+      host,
+      title,
+      tableDates,
+      startTime: document.getElementById("startTime").value,
+      location: document.getElementById("location").value,
+    };
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
         link +
@@ -40,6 +46,7 @@ const SettingsForm = ({
       .catch((error) => {
         console.error("Error sending POST request:", error);
       });
+    localStorage.setItem("tableData", JSON.stringify(data));
   };
 
   const handleBlur = () => {
@@ -66,12 +73,12 @@ const SettingsForm = ({
         </div>
         <div>
           <label>Start Time</label>
-          <input type="time" />
+          <input id="startTime" type="time" defaultValue={"18:00"} />
         </div>
 
         <div>
           <label>Location</label>
-          <input />
+          <input id="location" placeholder="e.g. Jon's House" />
         </div>
 
         <DateSelection onDateChange={onDateChange} />

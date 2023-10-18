@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 
-function JoinMeetupModal({ link }) {
-  const [tableData, setTableData] = useState();
+function JoinMeetupModal({ tableData }) {
   const [userData, setUserData] = useState();
   const noName = document.getElementById("name")?.value === "";
 
@@ -20,20 +19,6 @@ function JoinMeetupModal({ link }) {
       window.location.reload();
     }
   };
-
-  useEffect(() => {
-    fetch(
-      "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
-        link +
-        ".json"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Response from server:", data);
-        console.log("Title:", data.title);
-        setTableData(data);
-      });
-  }, [link]);
 
   return (
     <div>

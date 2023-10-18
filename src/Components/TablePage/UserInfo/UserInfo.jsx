@@ -20,7 +20,7 @@ const UserInfo = ({ data }) => {
     <div className={classes.infoBox}>
       <div className={classes.username}>
         <label>Your Username: </label>
-        <span>{data?.name}</span>
+        <span style={{ color: data?.colour }}>{data?.name}</span>
       </div>
       <div className={classes.personalIcon}>
         <label>Personal Icon: </label>

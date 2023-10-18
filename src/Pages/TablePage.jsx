@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // import TestCounter from "../Components/TestCounter";
 // import Rocks from "../Components/Rocks";
@@ -14,14 +14,30 @@ import JoinMeetupModal from "../Components/TablePage/JoinMeetupModal/JoinMeetupM
 
 function TablePage() {
   const params = useParams();
+  const link = params.eventId;
+
+  const [tableData, setTableData] = useState();
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
+
+  useEffect(() => {
+    fetch(
+      "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
+        link +
+        ".json"
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Response from server:", data);
+        setTableData(data);
+      });
+  }, [link]);
 
   return (
     <>
       TablePage (3) {params.eventId}
       {!userInfo && (
-        <JoinMeetupModal titleDisabled={true} link={params.eventId} />
+        <JoinMeetupModal titleDisabled={true} tableData={tableData} />
       )}
       {userInfo && (
         <div className={classes.container}>
@@ -30,7 +46,7 @@ function TablePage() {
             <MeetupsListButton />
           </div>
           <div className={classes.col2}>
-            <TableHeader />
+            <TableHeader tableData={tableData} />
             <DateTable />
           </div>
           <div className={classes.col3}>
