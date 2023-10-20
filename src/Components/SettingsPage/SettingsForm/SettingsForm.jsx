@@ -26,6 +26,8 @@ const SettingsForm = ({
       startTime: document.getElementById("startTime").value,
       location: document.getElementById("location").value,
     };
+
+    localStorage.setItem("tableData", JSON.stringify(data));
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
         link +
@@ -41,12 +43,12 @@ const SettingsForm = ({
       .then((response) => response.json())
       .then((data) => {
         // Server responds with {name: randomId}
-        console.log("Response from server:", data);
+        console.log("SENT! Response from server:", data);
       })
       .catch((error) => {
         console.error("Error sending POST request:", error);
       });
-    localStorage.setItem("tableData", JSON.stringify(data));
+    localStorage.setItem(link, "host");
   };
 
   const handleBlur = () => {

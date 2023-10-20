@@ -12,6 +12,7 @@ function JoinMeetupModal({ tableData }) {
 
   const handleModalClose = () => {
     if (noName) {
+      // fix this
       console.log("empty!");
     } else {
       console.log("close it up!");

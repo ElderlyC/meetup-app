@@ -15,47 +15,61 @@ import JoinMeetupModal from "../Components/TablePage/JoinMeetupModal/JoinMeetupM
 function TablePage() {
   const params = useParams();
   const link = params.eventId;
-
+  /// try fetch before initalising tableData?
   const [tableData, setTableData] = useState();
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
+  const storedTable = localStorage.getItem("tableData");
+  const table = storedTable ? JSON.parse(storedTable) : tableData;
+  //console.log(table);
+  // const [isHost, setIsHost] = useState(localStorage.getItem(link));
+  const isHost = localStorage.getItem(link);
+  const [loaded, setLoaded] = useState(false);
+
   useEffect(() => {
-    fetch(
-      "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
-        link +
-        ".json"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Response from server:", data);
-        setTableData(data);
-      });
-  }, [link]);
+    if (!isHost) {
+      fetch(
+        "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
+          link +
+          ".json"
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setTableData(data);
+        });
+    }
+
+    setLoaded(true);
+  }, [link, userInfo, isHost]);
 
   return (
     <>
-      TablePage (3) {params.eventId}
-      {!userInfo && (
-        <JoinMeetupModal titleDisabled={true} tableData={tableData} />
-      )}
-      {userInfo && (
-        <div className={classes.container}>
-          <div className={classes.col1}>
-            <UserInfo data={userInfo} />
-            <MeetupsListButton />
-          </div>
-          <div className={classes.col2}>
-            <TableHeader tableData={tableData} />
-            <DateTable />
-          </div>
-          <div className={classes.col3}>
-            <SettingsButton />
-            <MembersList />
-            <MeetupDay />
-          </div>
-          {/* <Rocks />
-    <TestCounter /> */}
+      {loaded && (
+        <div>
+          TablePage (3) {params.eventId}
+          {!userInfo && (
+            <JoinMeetupModal titleDisabled={true} tableData={table} />
+          )}
+          {userInfo && (
+            <div className={classes.container}>
+              <div className={classes.col1}>
+                <UserInfo data={userInfo} />
+                <MeetupsListButton />
+              </div>
+              <div className={classes.col2}>
+                <TableHeader tableData={table} />
+                <DateTable />
+              </div>
+              <div className={classes.col3}>
+                {isHost && <SettingsButton />}
+                <MembersList />
+                <MeetupDay />
+              </div>
+              {/* <Rocks />
+  <TestCounter /> */}
+            </div>
+          )}
         </div>
       )}
     </>

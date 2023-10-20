@@ -17,9 +17,11 @@
 }
 
 .infoBox {
-  border: 4px solid black;
+  /* border: 4px solid black; */
+  min-width: 33%;
 }
 
 .username {
   text-align: left;
+  display: flexbox;
 }
