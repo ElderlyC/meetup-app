@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-// import TestCounter from "../Components/TestCounter";
-// import Rocks from "../Components/Rocks";
 import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
 import UserInfo from "../Components/TablePage/UserInfo/UserInfo";
 import TableHeader from "../Components/TablePage/TableHeader/TableHeader";
@@ -15,15 +13,14 @@ import JoinMeetupModal from "../Components/TablePage/JoinMeetupModal/JoinMeetupM
 function TablePage() {
   const params = useParams();
   const link = params.eventId;
-  /// try fetch before initalising tableData?
+
   const [tableData, setTableData] = useState();
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
   const storedTable = localStorage.getItem("tableData");
   const table = storedTable ? JSON.parse(storedTable) : tableData;
-  //console.log(table);
-  // const [isHost, setIsHost] = useState(localStorage.getItem(link));
+
   const isHost = localStorage.getItem(link);
   const [loaded, setLoaded] = useState(false);
 
@@ -39,7 +36,6 @@ function TablePage() {
           setTableData(data);
         });
     }
-
     setLoaded(true);
   }, [link, userInfo, isHost]);
 
@@ -66,8 +62,6 @@ function TablePage() {
                 <MembersList />
                 <MeetupDay />
               </div>
-              {/* <Rocks />
-  <TestCounter /> */}
             </div>
           )}
         </div>
