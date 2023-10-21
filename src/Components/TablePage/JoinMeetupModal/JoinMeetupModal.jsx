@@ -11,14 +11,9 @@ function JoinMeetupModal({ tableData }) {
   };
 
   const handleModalClose = () => {
-    if (noName) {
-      // fix this
-      console.log("empty!");
-    } else {
-      console.log("close it up!");
-      localStorage.setItem("userInfo", JSON.stringify(userData));
-      window.location.reload();
-    }
+    console.log("close it up!");
+    localStorage.setItem("userInfo", JSON.stringify(userData));
+    window.location.reload();
   };
 
   return (

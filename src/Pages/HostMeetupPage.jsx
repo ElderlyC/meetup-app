@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import UserIdentifiers from "../Components/UserIdentifiers/UserIdentifiers";
 import GreenLinkButton from "../Components/GreenLinkButton/GreenLinkButton";
 import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
-// import TestFaces from "../Components/UserIdentifiers/TestFaces";
 
 function HostMeetupPage() {
   const [userData, setUserData] = useState();
@@ -26,7 +25,6 @@ function HostMeetupPage() {
 
   return (
     <div>
-      {/* <TestFaces /> */}
       Host your Meetup
       <UserIdentifiers onChangeData={handleDataChange} titleDisabled={false} />
       <GreenLinkButton
