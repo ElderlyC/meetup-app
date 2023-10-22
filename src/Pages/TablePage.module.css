@@ -9,9 +9,13 @@
 }
 .col2 {
   margin: 20px;
-  min-width: 25%;
+  min-width: 40%;
 }
 .col3 {
   margin: 20px;
   min-width: 25%;
+}
+
+.box {
+  width: 80%;
 }

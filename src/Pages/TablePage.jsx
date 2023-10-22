@@ -42,7 +42,7 @@ function TablePage() {
   return (
     <>
       {loaded && (
-        <div>
+        <div className={classes.box}>
           TablePage (3) {params.eventId}
           {!userInfo && (
             <JoinMeetupModal titleDisabled={true} tableData={table} />
