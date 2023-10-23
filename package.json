@@ -1,6 +1,6 @@
 {
   "name": "meetup-mannaja",
-  "homepage": "https://elderlyc.github.io/meetup-app",
+  "homepage": "https://elderlyc.github.io/meetup-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
