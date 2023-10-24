@@ -5,15 +5,15 @@
 
 .col1 {
   margin: 20px;
-  min-width: 25%;
+  min-width: 20%;
 }
 .col2 {
   margin: 20px;
-  min-width: 40%;
+  min-width: 50%;
 }
 .col3 {
   margin: 20px;
-  min-width: 25%;
+  min-width: 20%;
 }
 
 .box {
