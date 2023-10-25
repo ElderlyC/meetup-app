@@ -22,7 +22,9 @@ const UserInvite = ({ title, saveLink }) => {
   };
 
   useEffect(() => {
-    const newLink = title + randomNumber || randomNumber;
+    const newLink =
+      "https://elderlyc.github.io/meetup-app/#/" + title + randomNumber ||
+      randomNumber;
     setLink(newLink);
     saveLink(newLink);
   }, [title, randomNumber, saveLink]);

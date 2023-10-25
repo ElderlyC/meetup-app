@@ -29,7 +29,7 @@ const SettingsForm = ({
 
     localStorage.setItem("tableData", JSON.stringify(data));
     fetch(
-      "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
+      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
         link +
         ".json",
       {

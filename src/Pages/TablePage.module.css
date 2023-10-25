@@ -4,18 +4,18 @@
 }
 
 .col1 {
-  margin: 20px;
+  margin: 0 20px 0 5%;
   min-width: 20%;
 }
 .col2 {
   margin: 20px;
-  min-width: 50%;
+  min-width: 45%;
 }
 .col3 {
-  margin: 20px;
+  margin: 0 5% 0 20px;
   min-width: 20%;
 }
 
 .box {
-  width: 80%;
+  width: 100%;
 }
