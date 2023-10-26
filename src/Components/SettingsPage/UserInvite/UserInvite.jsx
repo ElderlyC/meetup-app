@@ -8,7 +8,9 @@ const UserInvite = ({ title, saveLink }) => {
   const input = document.getElementById("link");
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(link);
+    navigator.clipboard.writeText(
+      "https://elderlyc.github.io/meetup-app/#/" + link
+    );
     input.placeholder = "Copied to Clipboard!";
   };
 
@@ -22,9 +24,7 @@ const UserInvite = ({ title, saveLink }) => {
   };
 
   useEffect(() => {
-    const newLink =
-      "https://elderlyc.github.io/meetup-app/#/" + title + randomNumber ||
-      randomNumber;
+    const newLink = title + randomNumber || randomNumber;
     setLink(newLink);
     saveLink(newLink);
   }, [title, randomNumber, saveLink]);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
+import { getDatesInRange } from "../../SharedFunctions";
 
 const SettingsForm = ({
   onDateChange,
@@ -13,20 +14,31 @@ const SettingsForm = ({
 }) => {
   const [blur, setBlur] = useState(false);
 
+  console.log(tableDates, "tableDates");
+  const start = tableDates?.start;
+  const end = tableDates?.end;
+  const type = tableDates?.type;
+  const dateArray = getDatesInRange(start, end, type);
+  console.log(dateArray, "dateArray");
+
   const handleTitleInputChange = (e) => {
     onTitleChange(e.target.value);
   };
 
   const sendTableData = () => {
     // send all data, link, etc to firebase
+
     const data = {
       host,
       title,
       tableDates,
+      dateArray,
       startTime: document.getElementById("startTime").value,
       location: document.getElementById("location").value,
+      description: document.getElementById("description").value,
+      members: [host],
     };
-
+    console.log("making data", data.dateArray);
     localStorage.setItem("tableData", JSON.stringify(data));
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
@@ -88,6 +100,7 @@ const SettingsForm = ({
         <div>
           <label>Meetup Description</label>
           <textarea
+            id="description"
             placeholder="Activities, what to bring, other specific details about the meetup, etc."
             cols="40"
             rows="3"

@@ -29,9 +29,9 @@ const DateTable = ({ tableData }) => {
   console.log(daysInRange);
 
   const date = getNDaysLater(dateRange.end, 10);
-  // if (date !== "Invalid Date") {
-  //   console.log(date.toISOString());
-  // }
+  if (date) {
+    console.log(date.toISOString());
+  }
   console.log(date);
   console.log("Invalid Date");
   console.log(date === "Invalid Date");

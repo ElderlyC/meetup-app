@@ -16,6 +16,7 @@ function MeetupSettingsPage() {
   const [showInvite, setShowInvite] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
+    console.log(enteredDateData);
     setTableDates(enteredDateData);
   };
 
