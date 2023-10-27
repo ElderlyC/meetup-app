@@ -17,7 +17,7 @@ export function getDatesInRange(startDate, endDate, type) {
       type === "Full Week" ||
       (type === "Weekdays" && dayOfWeek >= 1 && dayOfWeek <= 5) ||
       (type === "Weekend" && (dayOfWeek === 0 || dayOfWeek === 6)) ||
-      (type === "Long Weekend" &&
+      (type === "Long Weekend (FSS)" &&
         (dayOfWeek === 5 || dayOfWeek === 0 || dayOfWeek === 6))
     ) {
       dates.push({

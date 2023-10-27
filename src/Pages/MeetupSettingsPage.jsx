@@ -44,6 +44,7 @@ function MeetupSettingsPage() {
           showInvite={handleShowInvite}
           tableDates={tableDates}
           host={host}
+          userInfo={JSON.parse(storedInfo)}
         />
         {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
         <button>

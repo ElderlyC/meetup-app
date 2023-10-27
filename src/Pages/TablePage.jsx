@@ -48,20 +48,23 @@ function TablePage() {
             <JoinMeetupModal titleDisabled={true} tableData={table} />
           )}
           {userInfo && (
-            <div className={classes.container}>
-              <div className={classes.col1}>
-                <UserInfo data={userInfo} />
-                <MeetupsListButton />
+            <div>
+              <div className={classes.container}>
+                <div className={classes.col1}>
+                  <UserInfo data={userInfo} />
+                  <MeetupsListButton />
+                </div>
+                <div className={classes.col2}>
+                  <TableHeader tableData={table} />
+                  <DateTable tableData={table} />
+                </div>
+                <div className={classes.col3}>
+                  {isHost && <SettingsButton className={classes.settings} />}
+                  <MembersList />
+                  <MeetupDay />
+                </div>
               </div>
-              <div className={classes.col2}>
-                <TableHeader tableData={table} />
-                <DateTable tableData={table} />
-              </div>
-              <div className={classes.col3}>
-                {isHost && <SettingsButton className={classes.settings} />}
-                <MembersList />
-                <MeetupDay />
-              </div>
+              <div className={classes.description}>Description</div>
             </div>
           )}
         </div>

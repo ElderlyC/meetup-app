@@ -5,7 +5,6 @@ import classes from "./DateTable.module.css";
 
 const DateTable = ({ tableData }) => {
   const dates = tableData?.tableDates;
-  console.log(dates);
 
   function getDaysInRange(range) {
     const startDate = new Date(range.start);
@@ -26,15 +25,11 @@ const DateTable = ({ tableData }) => {
     type: dates?.type,
   };
   const daysInRange = getDaysInRange(dateRange);
-  console.log(daysInRange);
 
   const date = getNDaysLater(dateRange.end, 10);
   if (date) {
     console.log(date.toISOString());
   }
-  console.log(date);
-  console.log("Invalid Date");
-  console.log(date === "Invalid Date");
 
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
   return (

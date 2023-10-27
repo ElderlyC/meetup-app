@@ -11,15 +11,9 @@ const SettingsForm = ({
   showInvite,
   tableDates,
   host,
+  userInfo,
 }) => {
   const [blur, setBlur] = useState(false);
-
-  console.log(tableDates, "tableDates");
-  const start = tableDates?.start;
-  const end = tableDates?.end;
-  const type = tableDates?.type;
-  const dateArray = getDatesInRange(start, end, type);
-  console.log(dateArray, "dateArray");
 
   const handleTitleInputChange = (e) => {
     onTitleChange(e.target.value);
@@ -27,6 +21,11 @@ const SettingsForm = ({
 
   const sendTableData = () => {
     // send all data, link, etc to firebase
+    const dateArray = getDatesInRange(
+      tableDates.start,
+      tableDates.end,
+      tableDates.type
+    );
 
     const data = {
       host,
@@ -36,9 +35,10 @@ const SettingsForm = ({
       startTime: document.getElementById("startTime").value,
       location: document.getElementById("location").value,
       description: document.getElementById("description").value,
-      members: [host],
+      //fix 'host'
+      members: [{ host: [userInfo.icon, userInfo.colour] }],
     };
-    console.log("making data", data.dateArray);
+
     localStorage.setItem("tableData", JSON.stringify(data));
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
