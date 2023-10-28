@@ -27,7 +27,7 @@ function TablePage() {
   useEffect(() => {
     if (!isHost) {
       fetch(
-        "https://meetup-mannaja-default-rtdb.firebaseio.com/table/" +
+        "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
           link +
           ".json"
       )
@@ -45,7 +45,11 @@ function TablePage() {
         <div className={classes.box}>
           TablePage (3) {params.eventId}
           {!userInfo && (
-            <JoinMeetupModal titleDisabled={true} tableData={table} />
+            <JoinMeetupModal
+              titleDisabled={true}
+              tableData={table}
+              link={link}
+            />
           )}
           {userInfo && (
             <div>
@@ -64,7 +68,11 @@ function TablePage() {
                   <MeetupDay />
                 </div>
               </div>
-              <div className={classes.description}>Description</div>
+              {table && (
+                <div className={classes.description}>
+                  Description: <p>{table.description}</p>
+                </div>
+              )}
             </div>
           )}
         </div>

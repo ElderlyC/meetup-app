@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 
-function JoinMeetupModal({ tableData }) {
+function JoinMeetupModal({ tableData, link }) {
   const [userData, setUserData] = useState();
   const noName = document.getElementById("name")?.value === "";
 
@@ -11,9 +11,32 @@ function JoinMeetupModal({ tableData }) {
   };
 
   const handleModalClose = () => {
-    console.log("close it up!");
     localStorage.setItem("userInfo", JSON.stringify(userData));
-    window.location.reload();
+
+    const memberList = tableData.members;
+    fetch(
+      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+        link +
+        "/members.json",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([
+          ...memberList,
+          { name: userData.name, icon: userData.icon, colour: userData.colour },
+        ]),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("SENT! Response from server:", data);
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error("Error sending POST request:", error);
+      });
   };
 
   return (

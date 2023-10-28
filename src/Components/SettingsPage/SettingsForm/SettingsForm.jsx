@@ -35,8 +35,7 @@ const SettingsForm = ({
       startTime: document.getElementById("startTime").value,
       location: document.getElementById("location").value,
       description: document.getElementById("description").value,
-      //fix 'host'
-      members: [{ host: [userInfo.icon, userInfo.colour] }],
+      members: [{ name: host, icon: userInfo.icon, colour: userInfo.colour }],
     };
 
     localStorage.setItem("tableData", JSON.stringify(data));

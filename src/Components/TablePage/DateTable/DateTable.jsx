@@ -6,29 +6,12 @@ import classes from "./DateTable.module.css";
 const DateTable = ({ tableData }) => {
   const dates = tableData?.tableDates;
 
-  function getDaysInRange(range) {
-    const startDate = new Date(range.start);
-    const endDate = new Date(range.end);
-    const days = [];
+  // const daysInRange = getDaysInRange(dateRange);
 
-    while (startDate <= endDate) {
-      days.push(startDate.toISOString().split("T")[0]);
-      startDate.setDate(startDate.getDate() + 1);
-    }
-
-    return days;
-  }
-
-  const dateRange = {
-    end: dates?.end,
-    start: dates?.start,
-    type: dates?.type,
-  };
-  const daysInRange = getDaysInRange(dateRange);
-
-  const date = getNDaysLater(dateRange.end, 10);
+  const date = getNDaysLater(dates?.end, 10);
   if (date) {
-    console.log(date.toISOString());
+    console.log(tableData);
+    console.log(date.toString());
   }
 
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
