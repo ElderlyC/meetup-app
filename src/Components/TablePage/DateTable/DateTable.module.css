@@ -1,23 +1,27 @@
 .tableButton {
-  width: 10%; /* Adjust the button width as needed */
-  height: 80px; /* Adjust the button height as needed */
+  width: 11%; /* Adjust the button width as needed */
+  height: 90px; /* Adjust the button height as needed */
   font-size: 20px; /* Adjust font size as needed */
   font-weight: bold;
+  position: relative;
 }
 
 .dayHeader {
   background-color: transparent;
   color: white;
   border: 0px;
-  width: 10%; /* Adjust the button width as needed */
+  width: 11%; /* Adjust the button width as needed */
   height: 40px; /* Adjust the button height as needed */
-  font-size: 20px; /* Adjust font size as needed */
+  font-size: 25px; /* Adjust font size as needed */
+  font-weight: bold;
+  margin-top: 25px;
 }
 
 .monthLabel {
   font-size: 16px;
   position: absolute;
-  margin-top: -30px;
-  margin-left: -35px;
+  top: -20px; /* Adjust the distance from the button */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
   color: rgb(230, 110, 11);
 }

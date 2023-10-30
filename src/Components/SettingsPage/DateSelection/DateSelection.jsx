@@ -13,7 +13,7 @@ const DateSelection = ({ onDateChange }) => {
   const [dateRange, setDateRange] = useState({
     type: "Full Week",
     start: todayFormatted,
-    end: getNDaysLater(todayFormatted, 21),
+    end: getNDaysLater(todayFormatted, 27),
   });
 
   // Calculate the previous Monday

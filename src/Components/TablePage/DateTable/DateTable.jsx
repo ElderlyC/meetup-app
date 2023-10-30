@@ -37,11 +37,12 @@ const DateTable = ({ tableData }) => {
         ))}
       </div>
       <div>
-        {calendarArray.map((date) => (
+        {calendarArray.map((date, index) => (
           <DateButton
             className={classes.tableButton}
             date={date}
             selected={selectedDatesArray}
+            index={index}
           />
         ))}
       </div>

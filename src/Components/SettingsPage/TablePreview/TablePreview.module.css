@@ -4,6 +4,7 @@
   height: 40px; /* Adjust the button height as needed */
   font-size: 16px; /* Adjust font size as needed */
   font-weight: bold;
+  position: relative;
 }
 /* Header styles */
 .dayHeader {
@@ -13,6 +14,7 @@
   width: 10%; /* Adjust the button width as needed */
   height: 40px; /* Adjust the button height as needed */
   font-size: 16px; /* Adjust font size as needed */
+  margin: 5px 10px 5px 10px;
 }
 
 .container {
@@ -26,7 +28,8 @@
 .monthLabel {
   font-size: 12px;
   position: absolute;
-  margin-top: -30px;
-  margin-left: -20px;
   color: rgb(230, 110, 11);
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
 }

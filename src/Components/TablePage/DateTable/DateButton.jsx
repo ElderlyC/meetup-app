@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./DateTable.module.css";
 
-const DateButton = ({ date, selected }) => {
+const DateButton = ({ date, index, selected }) => {
   const isSelected = selected.some((dateObj) => {
     const dateKey = Object.keys(dateObj)[0];
     return dateKey === date;
@@ -28,10 +28,9 @@ const DateButton = ({ date, selected }) => {
 
   return (
     <button className={classes.tableButton} disabled={!isSelected}>
-      {dateNumber === 1 && (
+      {(dateNumber === 1 || index === 0) && (
         <span className={classes.monthLabel}>{monthName}</span>
       )}
-
       <p>{dateNumber}</p>
     </button>
   );
