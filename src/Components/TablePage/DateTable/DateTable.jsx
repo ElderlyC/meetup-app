@@ -2,9 +2,10 @@ import React from "react";
 import DateButton from "./DateButton";
 import classes from "./DateTable.module.css";
 
-const DateTable = ({ tableData }) => {
+const DateTable = ({ tableData, link }) => {
   const dates = tableData?.tableDates;
-  const selectedDatesArray = tableData.dateArray;
+  const selectedDatesArray = tableData?.dateArray;
+  console.log(selectedDatesArray);
 
   const currentDate = new Date(dates?.start);
   const startDayNum = currentDate.getDay();
@@ -24,9 +25,8 @@ const DateTable = ({ tableData }) => {
     currentDate.setDate(currentDate.getDate() + 1);
   }
 
-  console.log(calendarArray);
-
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
+
   return (
     <div>
       <div>
@@ -39,10 +39,12 @@ const DateTable = ({ tableData }) => {
       <div>
         {calendarArray.map((date, index) => (
           <DateButton
+            key={date}
             className={classes.tableButton}
             date={date}
             selected={selectedDatesArray}
             index={index}
+            link={link}
           />
         ))}
       </div>

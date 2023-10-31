@@ -60,7 +60,7 @@ function TablePage() {
                 </div>
                 <div className={classes.col2}>
                   <TableHeader tableData={table} />
-                  <DateTable tableData={table} />
+                  <DateTable tableData={table} link={link} />
                 </div>
                 <div className={classes.col3}>
                   {isHost && <SettingsButton className={classes.settings} />}
