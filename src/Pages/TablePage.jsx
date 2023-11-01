@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
 import UserInfo from "../Components/TablePage/UserInfo/UserInfo";
 import TableHeader from "../Components/TablePage/TableHeader/TableHeader";
@@ -14,15 +16,39 @@ function TablePage() {
   const params = useParams();
   const link = params.eventId;
 
-  const [tableData, setTableData] = useState();
+  const [eventData, setEventData] = useState();
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
-  const storedTable = localStorage.getItem("tableData");
-  const table = storedTable ? JSON.parse(storedTable) : tableData;
-
   const isHost = localStorage.getItem(link);
   const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const firebaseConfig = {
+      apiKey: "AIzaSyALogs6dO87zJEjLihG7WIYyMks-1Jv-DA",
+      authDomain: "meetup-mannaja.firebaseapp.com",
+      databaseURL: "https://meetup-mannaja-default-rtdb.firebaseio.com",
+      projectId: "meetup-mannaja",
+      storageBucket: "meetup-mannaja.appspot.com",
+      messagingSenderId: "693531976064",
+      appId: "1:693531976064:web:39b7e22af956890b9f6165",
+    };
+
+    firebase.initializeApp(firebaseConfig);
+    const eventRef = firebase.database().ref(`/meetups/${link}`);
+
+    // Attach a listener to the eventRef
+    eventRef.on("value", (snapshot) => {
+      const eventData = snapshot.val();
+      // Update your local state (tableData) with the latest data from Firebase
+      setEventData(eventData);
+    });
+
+    // Don't forget to detach the listener when the component unmounts
+    return () => {
+      eventRef.off("value");
+    };
+  }, [link]);
 
   useEffect(() => {
     if (!isHost) {
@@ -33,7 +59,7 @@ function TablePage() {
       )
         .then((response) => response.json())
         .then((data) => {
-          setTableData(data);
+          setEventData(data);
         });
     }
     setLoaded(true);
@@ -47,7 +73,7 @@ function TablePage() {
           {!userInfo && (
             <JoinMeetupModal
               titleDisabled={true}
-              tableData={table}
+              eventData={eventData}
               link={link}
             />
           )}
@@ -59,18 +85,18 @@ function TablePage() {
                   <MeetupsListButton />
                 </div>
                 <div className={classes.col2}>
-                  <TableHeader tableData={table} />
-                  <DateTable tableData={table} link={link} />
+                  <TableHeader eventData={eventData} />
+                  <DateTable eventData={eventData} link={link} />
                 </div>
                 <div className={classes.col3}>
                   {isHost && <SettingsButton className={classes.settings} />}
-                  <MembersList />
+                  <MembersList eventData={eventData} />
                   <MeetupDay />
                 </div>
               </div>
-              {table && (
+              {eventData && (
                 <div className={classes.description}>
-                  Description: <p>{table.description}</p>
+                  Description: <p>{eventData.description}</p>
                 </div>
               )}
             </div>

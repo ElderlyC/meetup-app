@@ -2,10 +2,9 @@ import React from "react";
 import DateButton from "./DateButton";
 import classes from "./DateTable.module.css";
 
-const DateTable = ({ tableData, link }) => {
-  const dates = tableData?.tableDates;
-  const selectedDatesArray = tableData?.dateArray;
-  console.log(selectedDatesArray);
+const DateTable = ({ eventData, link }) => {
+  const dates = eventData?.tableDates;
+  const selectedDatesArray = eventData?.dateArray;
 
   const currentDate = new Date(dates?.start);
   const startDayNum = currentDate.getDay();

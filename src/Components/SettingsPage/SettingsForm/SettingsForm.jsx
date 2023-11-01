@@ -38,7 +38,6 @@ const SettingsForm = ({
       members: [{ name: host, icon: userInfo.icon, colour: userInfo.colour }],
     };
 
-    localStorage.setItem("tableData", JSON.stringify(data));
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
         link +

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 
-function JoinMeetupModal({ tableData, link }) {
+function JoinMeetupModal({ eventData, link }) {
   const [userData, setUserData] = useState();
   const noName = document.getElementById("name")?.value === "";
 
@@ -13,7 +13,7 @@ function JoinMeetupModal({ tableData, link }) {
   const handleModalClose = () => {
     localStorage.setItem("userInfo", JSON.stringify(userData));
 
-    const memberList = tableData.members;
+    const memberList = eventData.members;
     fetch(
       "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
         link +
@@ -43,15 +43,15 @@ function JoinMeetupModal({ tableData, link }) {
     <div>
       JoinMeetupModal{" "}
       <p>
-        You are invited to Join <b>{tableData?.title} </b>
-        by host <b>{tableData?.host}</b>!
+        You are invited to Join <b>{eventData?.title} </b>
+        by host <b>{eventData?.host}</b>!
       </p>
       Please enter your name and choose your icon
-      {tableData && (
+      {eventData && (
         <UserIdentifiers
           titleDisabled={true}
           onChangeData={handleUserData}
-          initialTitle={tableData.title}
+          initialTitle={eventData.title}
         />
       )}
       <button onClick={handleModalClose} disabled={noName}>

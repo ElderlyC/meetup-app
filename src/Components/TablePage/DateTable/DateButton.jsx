@@ -34,29 +34,33 @@ const DateButton = ({ date, index, selected, link }) => {
     const dateObject = updatedDateArray.find((obj) => obj.hasOwnProperty(date));
 
     //make sure the name isnt already there before adding to array (no dupes)
-    dateObject[date].attendees.push(name);
-    console.log(dateObject);
-    console.log(name);
-    console.log(selected, updatedDateArray);
-    // fetch(
-    //   "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
-    //     link +
-    //     "/dateArray.json",
-    //   {
-    //     method: "PUT",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(updatedDateArray),
-    //   }
-    // )
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log("SENT! Response from server:", data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error sending POST request:", error);
-    //   });
+    if (dateObject[date].attendees.includes(name)) {
+      dateObject[date].attendees = dateObject[date].attendees.filter(
+        (attendee) => attendee !== name
+      );
+    } else {
+      dateObject[date].attendees.push(name);
+    }
+
+    fetch(
+      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+        link +
+        "/dateArray.json",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updatedDateArray),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("SENT! Response from server:", data);
+      })
+      .catch((error) => {
+        console.error("Error sending POST request:", error);
+      });
   };
 
   return (
