@@ -91,7 +91,7 @@ function TablePage() {
                 <div className={classes.col3}>
                   {isHost && <SettingsButton className={classes.settings} />}
                   <MembersList eventData={eventData} />
-                  <MeetupDay />
+                  <MeetupDay eventData={eventData} />
                 </div>
               </div>
               {eventData && (

@@ -25,3 +25,12 @@
   transform: translateX(-50%); /* Center horizontally */
   color: rgb(230, 110, 11);
 }
+
+.attendees {
+  font-size: 12px;
+  color: #888;
+  position: absolute;
+  bottom: -10px; /* Adjust the distance from the button */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+}

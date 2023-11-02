@@ -56,12 +56,20 @@ const DateButton = ({ date, index, selected, link }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        console.log("SENT! Response from server:", data);
+        //console.log("SENT! Response from server:", data);
       })
       .catch((error) => {
         console.error("Error sending POST request:", error);
       });
   };
+
+  const dateObject = selected.find((obj) => obj.hasOwnProperty(date));
+  const numberOfAttendees = dateObject
+    ? dateObject[date]?.attendees.length - 1 || 0
+    : "";
+
+  //array of attendees for a given select date (minus the placeholder)
+  //const attendees = dateObject ? dateObject[date]?.attendees.slice(1) : "";
 
   return (
     <button
@@ -70,9 +78,14 @@ const DateButton = ({ date, index, selected, link }) => {
       onClick={handleDateClick}
     >
       {(dateNumber === 1 || index === 0) && (
-        <span className={classes.monthLabel}>{monthName}</span>
+        <label className={classes.monthLabel}>{monthName}</label>
       )}
-      <p>{dateNumber}</p>
+      <p className={classes.dateNumber}>{dateNumber}</p>
+      <p className={classes.attendees}>
+        {numberOfAttendees > 0 ? numberOfAttendees : ""}
+      </p>
+      {/* <p>{attendees}</p> */}
+      {/* change this to an onHover  */}
     </button>
   );
 };
