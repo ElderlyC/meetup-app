@@ -5,6 +5,7 @@ import classes from "./DateTable.module.css";
 const DateTable = ({ eventData, link }) => {
   const dates = eventData?.tableDates;
   const selectedDatesArray = eventData?.dateArray;
+  const members = eventData?.members;
 
   const currentDate = new Date(dates?.start);
   const startDayNum = currentDate.getDay();
@@ -35,7 +36,7 @@ const DateTable = ({ eventData, link }) => {
           </button>
         ))}
       </div>
-      <div>
+      <div className={classes["tableButton-container"]}>
         {calendarArray.map((date, index) => (
           <DateButton
             key={date}
@@ -44,6 +45,7 @@ const DateTable = ({ eventData, link }) => {
             selected={selectedDatesArray}
             index={index}
             link={link}
+            members={members}
           />
         ))}
       </div>

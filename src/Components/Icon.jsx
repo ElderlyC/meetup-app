@@ -17,7 +17,11 @@ const faces = {
 const Icon = ({ data }) => {
   return (
     <div className={classes.icon} style={{ backgroundColor: data?.colour }}>
-      <img src={faces[data?.icon]} alt="Personal Icon" />
+      <img
+        className={classes.face}
+        src={faces[data?.icon]}
+        alt="Personal Icon"
+      />
     </div>
   );
 };

@@ -1,0 +1,20 @@
+.container {
+  margin: 60px 0px;
+}
+
+.meetDay {
+  margin: 5px;
+  border: 2px dotted white;
+}
+
+.label {
+  font-size: 14px;
+}
+
+.votes {
+  padding: 5px;
+  font-size: 20px;
+  list-style: none; /* Remove bullet points */
+  margin: 0px;
+  border: 2px dotted white;
+}

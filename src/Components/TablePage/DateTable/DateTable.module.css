@@ -4,6 +4,13 @@
   font-size: 20px; /* Adjust font size as needed */
   font-weight: bold;
   position: relative;
+  /* new */
+  /*   */
+  /* color: #fff; */
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .dayHeader {
@@ -33,4 +40,43 @@
   bottom: -10px; /* Adjust the distance from the button */
   left: 50%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
+}
+
+/* Styling for the button */
+.tableButton-container {
+  position: relative;
+}
+
+.tableButton:hover {
+  background-color: #2980b9;
+}
+
+/* Styling for the tooltip */
+.tooltip {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  top: 60px; /* Adjust the distance from the button */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  display: none;
+  z-index: 1;
+}
+.tipTitle {
+  margin: 0px;
+}
+
+.tableButton-container:hover .tooltip {
+  display: block;
+}
+
+.list {
+  padding: 0px;
+}
+
+.attendee {
+  display: flex;
+  align-items: center;
 }

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
+import Icon from "../../Icon";
 import classes from "./DateTable.module.css";
 
-const DateButton = ({ date, index, selected, link }) => {
+const DateButton = ({ date, index, selected, link, members }) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [ownSelected, setOwnSelected] = useState(false);
+
   const isSelected = selected.some((dateObj) => {
     const dateKey = Object.keys(dateObj)[0];
     return dateKey === date;
@@ -38,8 +42,10 @@ const DateButton = ({ date, index, selected, link }) => {
       dateObject[date].attendees = dateObject[date].attendees.filter(
         (attendee) => attendee !== name
       );
+      setOwnSelected(false);
     } else {
       dateObject[date].attendees.push(name);
+      setOwnSelected(true);
     }
 
     fetch(
@@ -64,18 +70,33 @@ const DateButton = ({ date, index, selected, link }) => {
   };
 
   const dateObject = selected.find((obj) => obj.hasOwnProperty(date));
+
   const numberOfAttendees = dateObject
     ? dateObject[date]?.attendees.length - 1 || 0
     : "";
 
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
   //array of attendees for a given select date (minus the placeholder)
-  //const attendees = dateObject ? dateObject[date]?.attendees.slice(1) : "";
+  const attendees = dateObject ? dateObject[date]?.attendees.slice(1) : "";
+  const userHasSelected = dateObject
+    ? dateObject[date]?.attendees.includes(name)
+    : null;
 
   return (
     <button
       className={classes.tableButton}
       disabled={!isSelected}
       onClick={handleDateClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      style={{ backgroundColor: ownSelected || userHasSelected ? "green" : "" }}
     >
       {(dateNumber === 1 || index === 0) && (
         <label className={classes.monthLabel}>{monthName}</label>
@@ -84,8 +105,21 @@ const DateButton = ({ date, index, selected, link }) => {
       <p className={classes.attendees}>
         {numberOfAttendees > 0 ? numberOfAttendees : ""}
       </p>
-      {/* <p>{attendees}</p> */}
-      {/* change this to an onHover  */}
+      {showTooltip && attendees.length > 0 && (
+        <div className={classes.tooltip}>
+          <p className={classes.tipTitle}>Attendees:</p>
+          <ul className={classes.list}>
+            {attendees.map((attendee) => (
+              <li key={Math.random(100000)} className={classes.attendee}>
+                <Icon
+                  data={members.find((member) => member.name === attendee)}
+                />
+                <span>{attendee}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </button>
   );
 };

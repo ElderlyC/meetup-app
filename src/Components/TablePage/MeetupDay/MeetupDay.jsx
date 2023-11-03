@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
+import classes from "./MeetupDay.module.css";
 
 const MeetupDay = ({ eventData }) => {
-  // Initialize variables to keep track of the date with the most attendees
   const [mostAttendeesDate, setMaxDate] = useState();
   const [bestDayVoters, setVoters] = useState();
 
@@ -12,17 +12,19 @@ const MeetupDay = ({ eventData }) => {
         const date = Object.keys(dateObject)[0];
         const attendees = dateObject[date].attendees;
 
-        // Check if this date has more attendees than the current maximum
-        if (attendees.length > mostAttendeesCount) {
-          mostAttendeesCount = attendees.length;
+        if (attendees.length - 1 > mostAttendeesCount) {
+          mostAttendeesCount = attendees.length - 1;
           setMaxDate(date);
           setVoters(attendees.slice(1));
+        }
+        if (mostAttendeesCount === 0) {
+          setMaxDate();
+          setVoters();
         }
       }
     }
   }, [eventData]);
 
-  console.log(mostAttendeesDate);
   const meetupDay = mostAttendeesDate
     ? new Date(mostAttendeesDate).toLocaleDateString(undefined, {
         year: "numeric",
@@ -32,14 +34,17 @@ const MeetupDay = ({ eventData }) => {
     : "No attendees yet!";
 
   return (
-    <div>
-      Meetup Day: {meetupDay}
-      <p>(The earliest date with the most number of votes)</p>
-      <p>
-        Votes:{" "}
+    <div className={classes.container}>
+      Meetup Day:
+      <p className={classes.meetDay}>{meetupDay}</p>
+      <p className={classes.label}>
+        (The earliest date with the most number of votes)
+      </p>
+      <p className={classes.votes}>
+        Votes: {bestDayVoters?.length}
         {bestDayVoters &&
           bestDayVoters.map((voter) => {
-            return <li>{voter}</li>;
+            return <li key={voter}>{voter}</li>;
           })}
       </p>
     </div>

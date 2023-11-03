@@ -14,7 +14,7 @@ const MembersList = ({ eventData }) => {
           return (
             <div key={member.name} className={classes.member}>
               <Icon data={member} />
-              <li>{member.name}</li>
+              <li style={{ color: member.colour }}>{member.name}</li>
             </div>
           );
         })}
