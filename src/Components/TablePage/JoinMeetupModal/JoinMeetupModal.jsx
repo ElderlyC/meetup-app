@@ -3,7 +3,11 @@ import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 
 function JoinMeetupModal({ eventData, link }) {
   const [userData, setUserData] = useState();
-  const noName = document.getElementById("name")?.value === "";
+  const nameInput = document.getElementById("name")?.value;
+  const noName = nameInput === "";
+  const dupeName = eventData?.members.find(
+    (member) => member.name === nameInput
+  );
 
   const handleUserData = (data) => {
     console.log("set user data", data);
@@ -54,9 +58,10 @@ function JoinMeetupModal({ eventData, link }) {
           initialTitle={eventData.title}
         />
       )}
-      <button onClick={handleModalClose} disabled={noName}>
+      <button onClick={handleModalClose} disabled={noName || dupeName}>
         Join!
       </button>
+      {dupeName && <p>A member already has that name!</p>}
     </div>
   );
 }

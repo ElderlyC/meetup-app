@@ -1,27 +1,27 @@
-.icon {
-  width: 100px;
-  height: 100px;
-  transform: scale(0.4);
-  border-radius: 20px;
-  border: 4px solid black;
-  background-color: lavender;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* UserInfo.module.css */
 .personalIcon {
   display: flex;
   align-items: center;
 }
 
 .infoBox {
-  /* border: 4px solid black; */
-  min-width: 33%;
+  padding-left: 20px;
+  border-radius: 20px;
+  background: rgba(252, 252, 252, 0.397);
+  font-size: 20px;
+  max-width: 300px;
 }
 
 .username {
   text-align: left;
-  display: flexbox;
+}
+
+.name {
+  padding-left: 10px;
+  font-size: 30px;
+  font-weight: 800;
+  -webkit-text-stroke: 1px white;
+}
+
+.icon {
+  padding-left: 30px;
 }

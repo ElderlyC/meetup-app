@@ -8,11 +8,15 @@ const UserInfo = ({ data }) => {
     <div className={classes.infoBox}>
       <div className={classes.username}>
         <label>Your Username: </label>
-        <span style={{ color: data?.colour }}>{data?.name}</span>
+        <span className={classes.name} style={{ color: data?.colour }}>
+          {data?.name}
+        </span>
       </div>
       <div className={classes.personalIcon}>
         <label>Personal Icon: </label>
-        <Icon data={data} />
+        <div className={classes.icon}>
+          <Icon data={data} />
+        </div>
       </div>
     </div>
   );

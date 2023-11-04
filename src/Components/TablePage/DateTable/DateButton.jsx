@@ -89,6 +89,8 @@ const DateButton = ({ date, index, selected, link, members }) => {
     ? dateObject[date]?.attendees.includes(name)
     : null;
 
+  const selectedButton = ownSelected || userHasSelected;
+
   return (
     <button
       className={classes.tableButton}
@@ -96,18 +98,26 @@ const DateButton = ({ date, index, selected, link, members }) => {
       onClick={handleDateClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      style={{ backgroundColor: ownSelected || userHasSelected ? "green" : "" }}
+      style={{
+        color: selectedButton ? "white" : "",
+        backgroundColor: selectedButton ? "#2980b9" : "",
+      }}
     >
       {(dateNumber === 1 || index === 0) && (
         <label className={classes.monthLabel}>{monthName}</label>
       )}
       <p className={classes.dateNumber}>{dateNumber}</p>
-      <p className={classes.attendees}>
+      <p
+        className={classes.attendees}
+        style={{
+          color: selectedButton ? "white" : "",
+        }}
+      >
         {numberOfAttendees > 0 ? numberOfAttendees : ""}
       </p>
       {showTooltip && attendees.length > 0 && (
         <div className={classes.tooltip}>
-          <p className={classes.tipTitle}>Attendees:</p>
+          <p className={classes.tipTitle}>Votes:</p>
           <ul className={classes.list}>
             {attendees.map((attendee) => (
               <li key={Math.random(100000)} className={classes.attendee}>

@@ -6,6 +6,8 @@
 .col1 {
   margin: 0 20px 0 5%;
   min-width: 20%;
+  position: relative;
+  top: -80px;
 }
 .col2 {
   margin: 20px;

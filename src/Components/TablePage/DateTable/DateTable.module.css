@@ -35,7 +35,7 @@
 
 .attendees {
   font-size: 12px;
-  color: #888;
+  color: black;
   position: absolute;
   bottom: -10px; /* Adjust the distance from the button */
   left: 50%; /* Center horizontally */
@@ -79,4 +79,5 @@
 .attendee {
   display: flex;
   align-items: center;
+  margin-right: 5px;
 }
