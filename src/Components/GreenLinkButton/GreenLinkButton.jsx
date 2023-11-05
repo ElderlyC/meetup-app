@@ -5,7 +5,9 @@ import classes from "./GreenLinkButton.module.css";
 function GreenLinkButton({ url, pageName, onClick, disable }) {
   return (
     <button onClick={onClick} className={classes["big-green-button"]}>
-      <Link to={disable ? "" : url}>{pageName}</Link>
+      <Link className={classes.link} to={disable ? "" : url}>
+        {pageName}
+      </Link>
     </button>
   );
 }

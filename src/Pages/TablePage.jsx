@@ -20,7 +20,9 @@ function TablePage() {
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
-  const isHost = localStorage.getItem(link);
+  // make it an array that stores all the links that u hosted
+  const isHost = localStorage.getItem("host")?.includes(link) || null;
+  //const isHost = localStorage.getItem(link);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -69,7 +71,7 @@ function TablePage() {
     <>
       {loaded && (
         <div className={classes.box}>
-          TablePage (3) {params.eventId}
+          {/* TablePage (3) {params.eventId} */}
           {!userInfo && (
             <JoinMeetupModal
               titleDisabled={true}
@@ -96,7 +98,7 @@ function TablePage() {
               </div>
               {eventData && (
                 <div className={classes.description}>
-                  Description: <p>{eventData.description}</p>
+                  <p>{eventData.description}</p>
                 </div>
               )}
             </div>

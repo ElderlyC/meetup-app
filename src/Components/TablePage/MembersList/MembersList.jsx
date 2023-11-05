@@ -7,7 +7,7 @@ const MembersList = ({ eventData }) => {
   const memberListArray = eventData?.members.slice();
 
   return (
-    <div>
+    <div className={classes.container}>
       Members List:{" "}
       <ul>
         {memberListArray?.map((member) => {

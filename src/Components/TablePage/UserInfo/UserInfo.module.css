@@ -4,7 +4,7 @@
 }
 
 .infoBox {
-  padding-left: 20px;
+  padding: 0px 20px;
   border-radius: 20px;
   background: rgba(252, 252, 252, 0.397);
   font-size: 20px;

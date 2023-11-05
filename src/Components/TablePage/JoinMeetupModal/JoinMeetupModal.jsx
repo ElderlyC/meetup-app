@@ -10,7 +10,6 @@ function JoinMeetupModal({ eventData, link }) {
   );
 
   const handleUserData = (data) => {
-    console.log("set user data", data);
     setUserData(data);
   };
 

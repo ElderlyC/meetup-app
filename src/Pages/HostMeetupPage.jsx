@@ -29,7 +29,7 @@ function HostMeetupPage() {
       <UserIdentifiers onChangeData={handleDataChange} titleDisabled={false} />
       <GreenLinkButton
         url="/Meetup-Settings"
-        pageName="Host a New Meetup! (Meetup Settings)"
+        pageName="Host a New Meetup!"
         onClick={handleInfoSave}
         disable={inputsEmpty}
       />

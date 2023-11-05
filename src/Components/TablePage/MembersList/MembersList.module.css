@@ -1,3 +1,6 @@
+.container {
+  width: 80%;
+}
 .member {
   display: flex;
   align-items: center;
@@ -8,4 +11,5 @@ ul {
   list-style: none; /* Remove bullet points */
   margin: 0px;
   border: 2px dotted white;
+  padding: 10px;
 }

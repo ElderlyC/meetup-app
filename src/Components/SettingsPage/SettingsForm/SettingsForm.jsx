@@ -58,7 +58,12 @@ const SettingsForm = ({
       .catch((error) => {
         console.error("Error sending POST request:", error);
       });
-    localStorage.setItem(link, "host");
+    const hostedArray = JSON.parse(localStorage.getItem("host")) || [];
+    hostedArray.push(link);
+    localStorage.setItem("host", JSON.stringify(hostedArray));
+
+    //old method
+    //localStorage.setItem(link, "host");
   };
 
   const handleBlur = () => {
