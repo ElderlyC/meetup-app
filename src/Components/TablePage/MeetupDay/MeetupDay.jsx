@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "./MeetupDay.module.css";
 
-const MeetupDay = ({ eventData }) => {
+const MeetupDay = ({ eventData, link }) => {
   const [mostAttendeesDate, setMaxDate] = useState();
   const [bestDayVoters, setVoters] = useState();
 
@@ -32,6 +32,21 @@ const MeetupDay = ({ eventData }) => {
         day: "numeric",
       })
     : "No attendees yet!";
+
+  useEffect(() => {
+    fetch(
+      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+        link +
+        "/meetupDay.json",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(meetupDay),
+      }
+    );
+  }, [link, meetupDay]);
 
   return (
     <div className={classes.container}>

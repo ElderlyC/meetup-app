@@ -1,3 +1,50 @@
+.table {
+  border-collapse: collapse;
+}
+
 .headers {
-  margin: 20px;
+  font-weight: bold;
+  color: rgb(65, 65, 235);
+}
+
+.headers th {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.title {
+  background-color: #f2f2f2;
+}
+
+.host {
+  background-color: #e0e0e0;
+}
+
+.location {
+  background-color: #d8d8d8;
+}
+
+.startTime {
+  background-color: #c8c8c8;
+}
+
+.meetupDay {
+  background-color: #b8b8b8;
+}
+
+.status {
+  background-color: #a8a8a8;
+}
+
+td {
+  padding: 10px 30px;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(153, 0, 255);
+}
+
+a:hover {
+  color: rgb(255, 145, 0);
 }

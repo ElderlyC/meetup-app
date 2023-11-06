@@ -105,12 +105,14 @@ function UserIdentifiers({ onChangeData, titleDisabled, initialTitle }) {
           placeholder="Enter Your Name"
           onChange={(e) => setName(e.target.value)}
           value={name}
+          className={classes.name}
         />
         <input
           placeholder="Enter a Meetup Title"
           onChange={(e) => setTitle(e.target.value)}
           disabled={titleDisabled}
           value={title}
+          className={classes.title}
         />
       </div>
       <div className={classes.iconBox}>

@@ -6,16 +6,7 @@ import classes from "./MeetupsListPage.module.css";
 function MeetupsListPage() {
   const [events, setEvents] = useState([]);
 
-  const headerArray = [
-    "Meetup",
-    "Host",
-    "Location",
-    "Time",
-    "Meetup Day",
-    "Status",
-  ];
-
-  // should only show the events that i am the host of (check localStorage) !!!
+  // should only show the events that you are the host of (check localStorage) !!!
 
   useEffect(() => {
     fetch("https://meetup-mannaja-default-rtdb.firebaseio.com/meetups.json")
@@ -26,19 +17,29 @@ function MeetupsListPage() {
   }, []);
 
   return (
-    <div>
-      <h1>MeetupsListPage (4) WORK IN PROGRESS</h1>
-      {headerArray.map((heading) => (
-        <span key={heading} className={classes.headers}>
-          {heading}
-        </span>
-      ))}
-      {events &&
-        Object.keys(events).map((event) => (
-          <MeetupLink key={event} link={event} event={events[event]} />
-        ))}
+    <div className={classes.container}>
+      <h1>Meetup List - WORK IN PROGRESS</h1>
+      <table className={classes.table}>
+        <thead>
+          <tr className={classes.headers}>
+            <th className={classes.title}>Meetup</th>
+            <th className={classes.host}>Host</th>
+            <th className={classes.location}>Location</th>
+            <th className={classes.startTime}>Time</th>
+            <th className={classes.meetupDay}>Meetup Day</th>
+            <th className={classes.status}>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          {events &&
+            Object.keys(events).map((event) => (
+              <MeetupLink key={event} link={event} event={events[event]} />
+            ))}
+        </tbody>
+      </table>
+
       <button>
-        <Link to={"/"}>Organise a NEW Meetup!</Link>
+        <Link to="/">Organize a NEW Meetup!</Link>
       </button>
     </div>
   );

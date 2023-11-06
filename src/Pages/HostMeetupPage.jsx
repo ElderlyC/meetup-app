@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UserIdentifiers from "../Components/UserIdentifiers/UserIdentifiers";
 import GreenLinkButton from "../Components/GreenLinkButton/GreenLinkButton";
 import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
+import classes from "./HostMeetupPage.module.css";
 
 function HostMeetupPage() {
   const [userData, setUserData] = useState();
@@ -24,8 +25,8 @@ function HostMeetupPage() {
   };
 
   return (
-    <div>
-      Host your Meetup
+    <div className={classes.container}>
+      <p className={classes.title}>Host your Meetup</p>
       <UserIdentifiers onChangeData={handleDataChange} titleDisabled={false} />
       <GreenLinkButton
         url="/Meetup-Settings"
@@ -33,11 +34,13 @@ function HostMeetupPage() {
         onClick={handleInfoSave}
         disable={inputsEmpty}
       />
-      <div>
+      <div style={{ marginTop: "-10px" }}>
         <MeetupsListButton />
       </div>
       {inputsEmpty && clicked && (
-        <p>Remember to input both a name and a title!</p>
+        <p className={classes.error}>
+          Remember to input both a name and a title!
+        </p>
       )}
     </div>
   );
