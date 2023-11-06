@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import classes from "./DateSelection.module.css";
 
 const DateSelection = ({ onDateChange }) => {
   const today = new Date();
@@ -54,7 +55,9 @@ const DateSelection = ({ onDateChange }) => {
 
   return (
     <fieldset>
-      <legend>Specify the range of days to choose from</legend>
+      <legend className={classes.legend}>
+        Specify the range of days to choose from
+      </legend>
       <div>
         <label>Selection Type</label>
         <select

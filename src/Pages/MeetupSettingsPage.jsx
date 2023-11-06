@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import SettingsForm from "../Components/SettingsPage/SettingsForm/SettingsForm";
 import TablePreview from "../Components/SettingsPage/TablePreview/TablePreview";
 import UserInvite from "../Components/SettingsPage/UserInvite/UserInvite";
@@ -34,7 +33,7 @@ function MeetupSettingsPage() {
   return (
     <div className={classes.container}>
       <div className={classes.leftCol}>
-        MeetupSettingsPage (2)
+        <h1>Settings</h1>
         <SettingsForm
           onTitleChange={titleChangeHandler}
           onDateChange={dateChangeHandler}
@@ -45,13 +44,13 @@ function MeetupSettingsPage() {
           host={host}
           userInfo={JSON.parse(storedInfo)}
         />
-        {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
-        <button>
-          <Link to={"/Table"}>Go to Table</Link>
-        </button>
+        
+        
       </div>
       <div className={classes.rightCol}>
+        
         <TablePreview dateData={tableDates} />
+        {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
       </div>
     </div>
   );

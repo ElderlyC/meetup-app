@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GreenButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 import { getDatesInRange } from "../../SharedFunctions";
+import classes from "./SettingsForm.module.css";
 
 const SettingsForm = ({
   onDateChange,
@@ -61,9 +62,6 @@ const SettingsForm = ({
     const hostedArray = JSON.parse(localStorage.getItem("host")) || [];
     hostedArray.push(link);
     localStorage.setItem("host", JSON.stringify(hostedArray));
-
-    //old method
-    //localStorage.setItem(link, "host");
   };
 
   const handleBlur = () => {
@@ -75,7 +73,7 @@ const SettingsForm = ({
 
   return (
     <>
-      <form id="settings-form">
+      <form id="settings-form" className={classes.form}>
         <div>
           <label>Meetup Title</label>
           <input
@@ -107,6 +105,7 @@ const SettingsForm = ({
             placeholder="Activities, what to bring, other specific details about the meetup, etc."
             cols="40"
             rows="3"
+            className={classes.description}
           ></textarea>
         </div>
 

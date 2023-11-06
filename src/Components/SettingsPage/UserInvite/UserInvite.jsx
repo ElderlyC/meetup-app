@@ -35,7 +35,7 @@ const UserInvite = ({ title, saveLink }) => {
 
   return (
     <div>
-      <p>Invite Your Friends!</p>
+      <p className={classes.label}>Invite Your Friends!</p>
       <div>
         <div className={classes.inputContainer}>
           <input
@@ -47,8 +47,9 @@ const UserInvite = ({ title, saveLink }) => {
             onMouseLeave={handleMouseLeave}
           />
         </div>
-
-        <button onClick={handleCopy}>Copy</button>
+        <button onClick={handleCopy} className={classes.copy}>
+          Copy
+        </button>
       </div>
     </div>
   );

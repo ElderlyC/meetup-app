@@ -1,0 +1,13 @@
+.form {
+  font-size: 1.7vw;
+  text-align: left;
+}
+
+.form input,
+select {
+  font-size: 1.5vw;
+}
+
+.description {
+  font-size: 1vw;
+}

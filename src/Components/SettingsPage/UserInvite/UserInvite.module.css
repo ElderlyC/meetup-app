@@ -2,7 +2,15 @@
 
 .link {
   padding: 10px;
-  font-size: 16px;
+  font-size: 1.2vw;
   position: relative;
   width: 40%;
+}
+
+.label {
+  font-size: 1.7vw;
+}
+
+.copy {
+  font-size: 1.7vw;
 }
