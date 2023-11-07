@@ -6,7 +6,7 @@ const MeetupDay = ({ eventData, link }) => {
   const [bestDayVoters, setVoters] = useState();
 
   useEffect(() => {
-    if (eventData) {
+    if (eventData?.dateArray) {
       let mostAttendeesCount = 0;
       for (const dateObject of eventData.dateArray) {
         const date = Object.keys(dateObject)[0];

@@ -4,6 +4,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 import MeetupsListButton from "../Components/MeetupsListButton/MeetupsListButton";
 import UserInfo from "../Components/TablePage/UserInfo/UserInfo";
+import ChangeUser from "../Components/TablePage/ChangeUser/ChangeUser";
 import TableHeader from "../Components/TablePage/TableHeader/TableHeader";
 import DateTable from "../Components/TablePage/DateTable/DateTable";
 import SettingsButton from "../Components/TablePage/SettingsButton/SettingsButton";
@@ -20,9 +21,7 @@ function TablePage() {
 
   const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
 
-  // make it an array that stores all the links that u hosted
   const isHost = localStorage.getItem("host")?.includes(link) || null;
-  //const isHost = localStorage.getItem(link);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -42,36 +41,19 @@ function TablePage() {
     // Attach a listener to the eventRef
     eventRef.on("value", (snapshot) => {
       const eventData = snapshot.val();
-      // Update your local state (tableData) with the latest data from Firebase
       setEventData(eventData);
     });
-
-    // Don't forget to detach the listener when the component unmounts
+    setLoaded(true);
+    // Detach the listener when the component unmounts
     return () => {
       eventRef.off("value");
     };
   }, [link]);
 
-  useEffect(() => {
-    if (!isHost) {
-      fetch(
-        "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
-          link +
-          ".json"
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          setEventData(data);
-        });
-    }
-    setLoaded(true);
-  }, [link, userInfo, isHost]);
-
   return (
     <>
       {loaded && (
         <div className={classes.box}>
-          {/* TablePage (3) {params.eventId} */}
           {!userInfo && (
             <JoinMeetupModal
               titleDisabled={true}
@@ -84,6 +66,7 @@ function TablePage() {
               <div className={classes.container}>
                 <div className={classes.col1}>
                   <UserInfo data={userInfo} />
+                  <ChangeUser />
                   <MeetupsListButton />
                 </div>
                 <div className={classes.col2}>

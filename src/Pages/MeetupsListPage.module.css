@@ -40,11 +40,11 @@ td {
   padding: 10px 30px;
 }
 
-a {
+.table a {
   text-decoration: none;
-  color: rgb(153, 0, 255);
+  color: rgb(0, 153, 255);
 }
 
-a:hover {
+.table a:hover {
   color: rgb(255, 145, 0);
 }

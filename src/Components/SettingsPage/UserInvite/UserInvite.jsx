@@ -8,8 +8,9 @@ const UserInvite = ({ title, saveLink }) => {
   const input = document.getElementById("link");
 
   const handleCopy = () => {
+    const fixedlink = link.replaceAll(" ", "%20");
     navigator.clipboard.writeText(
-      "https://elderlyc.github.io/meetup-app/#/" + link
+      "https://elderlyc.github.io/meetup-app/#/" + fixedlink
     );
     input.placeholder = "Copied to Clipboard!";
   };

@@ -1,27 +1,28 @@
 .personalIcon {
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .infoBox {
-  padding: 0px 20px;
+  padding: 10px 20px;
   border-radius: 20px;
   background: rgba(252, 252, 252, 0.397);
   font-size: 20px;
   max-width: 300px;
+  margin-bottom: 10px;
 }
 
 .username {
-  text-align: left;
 }
 
 .name {
-  padding-left: 10px;
-  font-size: 30px;
+  font-size: 1.5em;
   font-weight: 800;
-  -webkit-text-stroke: 1px white;
+  -webkit-text-stroke: 1px black;
 }
 
 .icon {
-  padding-left: 30px;
+  transform: scale(1.5);
+  margin: 10px;
 }

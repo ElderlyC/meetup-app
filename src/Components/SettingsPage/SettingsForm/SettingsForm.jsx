@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import GreenButton from "../../GreenLinkButton/GreenLinkButton";
+import GreenLinkButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 import { getDatesInRange } from "../../SharedFunctions";
 import classes from "./SettingsForm.module.css";
@@ -110,13 +110,11 @@ const SettingsForm = ({
         </div>
 
         {title ? (
-          <GreenButton
+          <GreenLinkButton
             url={`../${link}`}
             pageName={"Done"}
             onClick={sendTableData}
-          >
-            Done!
-          </GreenButton>
+          />
         ) : (
           <p>You need a title!</p>
         )}

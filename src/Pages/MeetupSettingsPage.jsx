@@ -44,11 +44,8 @@ function MeetupSettingsPage() {
           host={host}
           userInfo={JSON.parse(storedInfo)}
         />
-        
-        
       </div>
       <div className={classes.rightCol}>
-        
         <TablePreview dateData={tableDates} />
         {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
       </div>

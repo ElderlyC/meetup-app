@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
+import classes from "./JoinMeetupModal.module.css";
+import GreenLinkButton from "../../GreenLinkButton/GreenLinkButton";
 
 function JoinMeetupModal({ eventData, link }) {
   const [userData, setUserData] = useState();
   const nameInput = document.getElementById("name")?.value;
   const noName = nameInput === "";
-  const dupeName = eventData?.members.find(
+  const existingMember = eventData?.members.find(
     (member) => member.name === nameInput
   );
 
@@ -14,36 +16,48 @@ function JoinMeetupModal({ eventData, link }) {
   };
 
   const handleModalClose = () => {
-    localStorage.setItem("userInfo", JSON.stringify(userData));
+    if (!noName) {
+      if (!existingMember) {
+        localStorage.setItem("userInfo", JSON.stringify(userData));
 
-    const memberList = eventData.members;
-    fetch(
-      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
-        link +
-        "/members.json",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify([
-          ...memberList,
-          { name: userData.name, icon: userData.icon, colour: userData.colour },
-        ]),
-      }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("SENT! Response from server:", data);
+        const memberList = eventData.members;
+        fetch(
+          "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+            link +
+            "/members.json",
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify([
+              ...memberList,
+              {
+                name: userData.name,
+                icon: userData.icon,
+                colour: userData.colour,
+              },
+            ]),
+          }
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("SENT! Response from server:", data);
+            window.location.reload();
+          })
+          .catch((error) => {
+            console.error("Error sending POST request:", error);
+          });
+      } else {
+        console.log("exisitng member", existingMember);
+        localStorage.setItem("userInfo", JSON.stringify(existingMember));
         window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Error sending POST request:", error);
-      });
+      }
+    }
   };
 
   return (
-    <div>
+    <div className={classes.container}>
       JoinMeetupModal{" "}
       <p>
         You are invited to Join <b>{eventData?.title} </b>
@@ -57,10 +71,11 @@ function JoinMeetupModal({ eventData, link }) {
           initialTitle={eventData.title}
         />
       )}
-      <button onClick={handleModalClose} disabled={noName || dupeName}>
-        Join!
-      </button>
-      {dupeName && <p>A member already has that name!</p>}
+      <GreenLinkButton
+        pageName="Join!"
+        onClick={handleModalClose}
+        disable={noName}
+      />
     </div>
   );
 }

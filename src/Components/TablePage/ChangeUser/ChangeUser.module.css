@@ -1,7 +1,7 @@
-.MLbutton {
+.change {
   display: inline-block;
   padding: 10px 50px; /* Adjust padding as needed for the button size */
-  background-color: #1e45af; /* Green color */
+  background-color: rgb(241, 185, 80); /* Green color */
   color: #fff; /* Text color */
   border: none;
   border-radius: 4px; /* Rounded corners */
@@ -11,12 +11,13 @@
   text-decoration: none; /* Remove underlines for links */
   text-align: center;
   transition: background-color 0.3s ease; /* Smooth color transition on hover */
-  /* Add more styles as needed */
+  margin-bottom: 0px; /* Add more styles as needed */
 }
 
 /* Hover effect */
-.link:hover {
-  color: rgb(255, 145, 0);
+.change:hover {
+  background-color: #e9a615; /* Darker green color on hover */
+  color: #3f67d3;
 }
 
 .link {

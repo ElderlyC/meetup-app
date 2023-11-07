@@ -4,7 +4,7 @@ import Icon from "../../Icon";
 import classes from "./MembersList.module.css";
 
 const MembersList = ({ eventData }) => {
-  const memberListArray = eventData?.members.slice();
+  const memberListArray = eventData?.members?.slice();
 
   return (
     <div className={classes.container}>

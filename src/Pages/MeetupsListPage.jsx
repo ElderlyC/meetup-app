@@ -33,7 +33,12 @@ function MeetupsListPage() {
         <tbody>
           {events &&
             Object.keys(events).map((event) => (
-              <MeetupLink key={event} link={event} event={events[event]} />
+              <MeetupLink
+                key={event}
+                link={event}
+                event={events[event]}
+                className={classes.links}
+              />
             ))}
         </tbody>
       </table>
