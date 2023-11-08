@@ -8,20 +8,22 @@ const UserInvite = ({ title, saveLink }) => {
   const input = document.getElementById("link");
 
   const handleCopy = () => {
-    const fixedlink = link.replaceAll(" ", "%20");
-    navigator.clipboard.writeText(
-      "https://elderlyc.github.io/meetup-app/#/" + fixedlink
-    );
-    input.placeholder = "Copied to Clipboard!";
+    if (title) {
+      const fixedlink = link.replaceAll(" ", "%20");
+      navigator.clipboard.writeText(
+        "https://elderlyc.github.io/meetup-app/#/" + fixedlink
+      );
+      input.placeholder = "Copied to Clipboard!";
+    }
   };
 
   const handleMouseHover = () => {
-    input.value = link; // Set the placeholder to the current value
+    input.value = link;
   };
 
   const handleMouseLeave = () => {
     input.value = "";
-    input.placeholder = "Hover to reveal link"; // Set the placeholder to the current value
+    input.placeholder = "Hover to reveal link";
   };
 
   useEffect(() => {

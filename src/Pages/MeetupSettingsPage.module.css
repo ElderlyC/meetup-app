@@ -1,13 +1,37 @@
 .container {
   display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
-.leftCol {
-  margin: 20px;
-  min-width: 45%;
+@media (min-width: 1200px) {
+  .cols {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .leftCol,
+  .rightCol {
+    margin: 20px 50px;
+    min-width: 25%;
+    max-width: 35%;
+    align-items: center;
+  }
 }
 
-.rightCol {
-  margin: 20px;
-  min-width: 45%;
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .rightCol {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -9,7 +9,6 @@ const SettingsForm = ({
   onTitleChange,
   link,
   title,
-  showInvite,
   tableDates,
   host,
   userInfo,
@@ -68,13 +67,12 @@ const SettingsForm = ({
     if (title !== "") {
       setBlur(true);
     }
-    showInvite(true);
   };
 
   return (
     <>
       <form id="settings-form" className={classes.form}>
-        <div>
+        <div className={classes.pair}>
           <label>Meetup Title</label>
           <input
             id="title"
@@ -86,20 +84,21 @@ const SettingsForm = ({
             required
           />
         </div>
-        <div>
+        <div className={classes.pair}>
           <label>Start Time</label>
           <input id="startTime" type="time" defaultValue={"18:00"} />
         </div>
 
-        <div>
+        <div className={classes.pair}>
           <label>Location</label>
           <input id="location" placeholder="e.g. Jon's House" />
         </div>
+        <div className={classes.dates}>
+          <DateSelection onDateChange={onDateChange} />
+        </div>
 
-        <DateSelection onDateChange={onDateChange} />
-
-        <div>
-          <label>Meetup Description</label>
+        <div className={classes.pair}>
+          <label>Description</label>
           <textarea
             id="description"
             placeholder="Activities, what to bring, other specific details about the meetup, etc."
@@ -108,16 +107,17 @@ const SettingsForm = ({
             className={classes.description}
           ></textarea>
         </div>
-
-        {title ? (
-          <GreenLinkButton
-            url={`../${link}`}
-            pageName={"Done"}
-            onClick={sendTableData}
-          />
-        ) : (
-          <p>You need a title!</p>
-        )}
+        <div className={classes.done}>
+          {title ? (
+            <GreenLinkButton
+              url={`../${link}`}
+              pageName={"Done"}
+              onClick={sendTableData}
+            />
+          ) : (
+            <p>You need a title!</p>
+          )}
+        </div>
       </form>
     </>
   );

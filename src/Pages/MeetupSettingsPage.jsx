@@ -12,7 +12,6 @@ function MeetupSettingsPage() {
   const [tableDates, setTableDates] = useState();
   const [title, setTitle] = useState(initialTitle);
   const [link, setLink] = useState();
-  const [showInvite, setShowInvite] = useState();
 
   const dateChangeHandler = (enteredDateData) => {
     setTableDates(enteredDateData);
@@ -26,28 +25,25 @@ function MeetupSettingsPage() {
     setLink(link);
   };
 
-  const handleShowInvite = (show) => {
-    setShowInvite(show);
-  };
-
   return (
     <div className={classes.container}>
-      <div className={classes.leftCol}>
-        <h1>Settings</h1>
-        <SettingsForm
-          onTitleChange={titleChangeHandler}
-          onDateChange={dateChangeHandler}
-          link={link}
-          title={title}
-          showInvite={handleShowInvite}
-          tableDates={tableDates}
-          host={host}
-          userInfo={JSON.parse(storedInfo)}
-        />
-      </div>
-      <div className={classes.rightCol}>
-        <TablePreview dateData={tableDates} />
-        {showInvite && <UserInvite title={title} saveLink={handleSaveLink} />}
+      <h1>Settings</h1>
+      <div className={classes.cols}>
+        <div className={classes.leftCol}>
+          <SettingsForm
+            onTitleChange={titleChangeHandler}
+            onDateChange={dateChangeHandler}
+            link={link}
+            title={title}
+            tableDates={tableDates}
+            host={host}
+            userInfo={JSON.parse(storedInfo)}
+          />
+        </div>
+        <div className={classes.rightCol}>
+          <TablePreview dateData={tableDates} />
+          <UserInvite title={title} saveLink={handleSaveLink} />
+        </div>
       </div>
     </div>
   );

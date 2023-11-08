@@ -1,25 +1,25 @@
 .MLbutton {
   display: inline-block;
-  padding: 10px 50px; /* Adjust padding as needed for the button size */
-  background-color: #1e45af; /* Green color */
-  color: #fff; /* Text color */
+  padding: 10px 50px;
+  background-color: #1e45af;
   border: none;
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 24px; /* Adjust font size as needed */
+  font-size: 1.5rem;
   font-weight: 550;
-  text-decoration: none; /* Remove underlines for links */
   text-align: center;
-  transition: background-color 0.3s ease; /* Smooth color transition on hover */
-  /* Add more styles as needed */
+  transition: background-color 0.3s ease;
 }
 
-/* Hover effect */
+.MLbutton:hover {
+  background-color: rgb(29, 61, 167);
+}
+
 .link:hover {
   color: rgb(255, 145, 0);
 }
 
 .link {
   color: #fff;
-  text-decoration: none; /* Remove underlines for links */
+  text-decoration: none;
 }

@@ -1,20 +1,36 @@
-/* Button styles */
-.tableButton {
-  width: 10%; /* Adjust the button width as needed */
-  height: 40px; /* Adjust the button height as needed */
-  font-size: 16px; /* Adjust font size as needed */
-  font-weight: bold;
-  position: relative;
+.title {
+  font-size: 2rem;
+  margin: auto;
 }
-/* Header styles */
+
+.headers,
+.rows {
+  white-space: nowrap;
+}
+
+.tableButton,
 .dayHeader {
+  width: 2.5vw;
+  max-width: 40px;
+  height: 5vh;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 0;
+  margin: 10px;
+}
+
+.dayHeader {
+  border: 0;
   background-color: transparent;
-  color: black;
-  border: 0px;
-  width: 10%; /* Adjust the button width as needed */
-  height: 40px; /* Adjust the button height as needed */
-  font-size: 16px; /* Adjust font size as needed */
-  margin: 5px 10px 5px 10px;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
 }
 
 .container {
@@ -23,6 +39,10 @@
   border-radius: 10px;
   padding: 10px 0px;
   color: rgb(230, 110, 11);
+  margin: 0 30px;
+  padding: 10px;
+  font-size: 20px;
+  max-width: 450px;
 }
 
 .monthLabel {
@@ -32,4 +52,19 @@
   top: -20px;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* Media query for phones, tabs (<1200px width) */
+@media (max-width: 1200px) {
+  .tableButton,
+  .dayHeader {
+    height: 5vh;
+    width: 9vw;
+    font-size: 1rem;
+    margin: 5px;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
 }

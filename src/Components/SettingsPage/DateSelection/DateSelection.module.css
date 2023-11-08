@@ -1,3 +1,35 @@
+.field {
+  margin: 20px 0;
+}
+
+.field div {
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.field select,
+.field input {
+  flex: 1; /* Allow form controls to take up available space */
+}
+
+.field label {
+  flex: 1; /* Don't take up space for the labels */
+}
+
 .legend {
-  font-size: 1.3vw;
+  font-size: 1.3rem;
+}
+
+@media (max-width: 600px) {
+  .legend {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .field {
+    max-width: 700px;
+  }
 }

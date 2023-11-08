@@ -54,7 +54,7 @@ const DateSelection = ({ onDateChange }) => {
   }, [dateRange, onDateChange, firstMondayFormatted]);
 
   return (
-    <fieldset>
+    <fieldset className={classes.field}>
       <legend className={classes.legend}>
         Specify the range of days to choose from
       </legend>
@@ -72,7 +72,7 @@ const DateSelection = ({ onDateChange }) => {
       </div>
 
       <div>
-        <label>Start of Selection Range</label>
+        <label>Start of Range</label>
         <input
           type="date"
           value={dateRange.start}
@@ -82,7 +82,7 @@ const DateSelection = ({ onDateChange }) => {
       </div>
 
       <div>
-        <label>End of Selection Range</label>
+        <label>End of Range</label>
         <input
           type="date"
           value={dateRange.end}

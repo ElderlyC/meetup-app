@@ -1,13 +1,62 @@
 .form {
-  font-size: 1.7vw;
   text-align: left;
 }
 
+.pair {
+  display: flex;
+  justify-content: center;
+  margin: 5px 10px;
+}
+
 .form input,
-select {
-  font-size: 1.5vw;
+.form label,
+.form select {
+  display: flex;
+  flex: 1;
+  font-size: 1.7rem;
+  max-width: 220px;
+}
+
+.dates {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: none;
 }
 
 .description {
-  font-size: 1vw;
+  max-width: 300px;
+}
+
+.done {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .form input,
+  .form select,
+  .form label {
+    max-width: 200px;
+    font-size: 16px;
+    min-width: 100px;
+  }
+
+  .form label {
+    padding-left: 10px;
+  }
+
+  .form input,
+  .form select {
+    margin-right: 10px;
+  }
+
+  .description {
+    max-width: 80%;
+    margin-right: 10px;
+  }
+
+  .done {
+    margin-top: -10px;
+  }
 }

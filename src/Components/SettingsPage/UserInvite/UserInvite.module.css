@@ -1,16 +1,16 @@
-/* UserInvite.module.css */
-
 .link {
   padding: 10px;
-  font-size: 1.2vw;
+  font-size: 1.2rem;
   position: relative;
   width: 40%;
+  min-width: 200px;
+}
+
+.label,
+.copy {
+  font-size: 1.7rem;
 }
 
 .label {
-  font-size: 1.7vw;
-}
-
-.copy {
-  font-size: 1.7vw;
+  margin: 10px;
 }

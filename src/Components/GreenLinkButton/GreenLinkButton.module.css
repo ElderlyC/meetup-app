@@ -1,26 +1,26 @@
-/* Reusable Big Green Button */
 .big-green-button {
   display: inline-block;
-  padding: 10px 20px; /* Adjust padding as needed for the button size */
-  background-color: #4caf50; /* Green color */
-  /* Text color */
+  padding: 10px 20px;
+  background-color: #4caf50;
   border: none;
-  border-radius: 4px; /* Rounded corners */
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 28px; /* Adjust font size as needed */
+  font-size: 2rem;
   font-weight: 550;
   text-align: center;
   transition: background-color 0.3s ease; /* Smooth color transition on hover */
   margin-top: 20px;
-  /* Add more styles as needed */
 }
 
-/* Hover effect */
 .big-green-button:hover {
-  background-color: #45a049; /* Darker green color on hover */
+  background-color: #45a049;
 }
 
 .link {
   color: #fff;
-  text-decoration: none; /* Remove underlines for links */
+  text-decoration: none;
+}
+
+.link:hover {
+  color: rgb(131, 1, 182);
 }
