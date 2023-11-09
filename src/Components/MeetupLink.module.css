@@ -1,0 +1,28 @@
+.tools {
+  border: 0;
+  display: flex;
+  max-width: 120px;
+  padding: 0;
+}
+
+.tools button {
+  background-color: transparent;
+  padding: 5%;
+  margin: 0;
+  border: 0;
+  max-width: 50%;
+  display: flex;
+}
+
+.expand,
+.delete {
+  margin: 0;
+  background-color: transparent;
+  border: 0;
+  max-width: 100%;
+  flex: 1;
+}
+
+.delete:hover {
+  filter: hue-rotate(-30deg);
+}

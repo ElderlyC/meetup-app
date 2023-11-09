@@ -28,6 +28,7 @@ function MeetupsListPage() {
             <th className={classes.startTime}>Time</th>
             <th className={classes.meetupDay}>Meetup Day</th>
             <th className={classes.status}>Status</th>
+            <th className={classes.empty}>Edit</th>
           </tr>
         </thead>
         <tbody>
