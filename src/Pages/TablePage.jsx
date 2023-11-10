@@ -42,8 +42,8 @@ function TablePage() {
     eventRef.on("value", (snapshot) => {
       const eventData = snapshot.val();
       setEventData(eventData);
+      setLoaded(true);
     });
-    setLoaded(true);
     // Detach the listener when the component unmounts
     return () => {
       eventRef.off("value");
@@ -52,7 +52,7 @@ function TablePage() {
 
   return (
     <>
-      {loaded && (
+      {loaded ? (
         <div className={classes.box}>
           {!userInfo && (
             <JoinMeetupModal
@@ -87,6 +87,8 @@ function TablePage() {
             </div>
           )}
         </div>
+      ) : (
+        <p>Loading...</p>
       )}
     </>
   );

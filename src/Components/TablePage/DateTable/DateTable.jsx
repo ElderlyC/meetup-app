@@ -29,26 +29,32 @@ const DateTable = ({ eventData, link }) => {
 
   return (
     <div>
-      <div>
-        {dayHeaders.map((cell) => (
-          <button key={cell} className={classes.dayHeader}>
-            {cell}
-          </button>
-        ))}
-      </div>
-      <div className={classes["tableButton-container"]}>
-        {calendarArray.map((date, index) => (
-          <DateButton
-            key={date}
-            className={classes.tableButton}
-            date={date}
-            selected={selectedDatesArray}
-            index={index}
-            link={link}
-            members={members}
-          />
-        ))}
-      </div>
+      {eventData ? (
+        <>
+          <div>
+            {dayHeaders.map((cell) => (
+              <button key={cell} className={classes.dayHeader}>
+                {cell}
+              </button>
+            ))}
+          </div>
+          <div className={classes["tableButton-container"]}>
+            {calendarArray.map((date, index) => (
+              <DateButton
+                key={date}
+                className={classes.tableButton}
+                date={date}
+                selected={selectedDatesArray}
+                index={index}
+                link={link}
+                members={members}
+              />
+            ))}
+          </div>
+        </>
+      ) : (
+        <p>Loading Table...</p>
+      )}
     </div>
   );
 };

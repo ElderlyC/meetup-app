@@ -5,8 +5,14 @@ const TableHeader = ({ eventData }) => {
   return (
     <div className={classes.header}>
       <h1>{eventData?.title}</h1>
-      <h2>Start Time: {eventData?.startTime}</h2>
-      <h2>Location: {eventData?.location}</h2>
+      {eventData ? (
+        <>
+          <h2>Start Time: {eventData?.startTime}</h2>
+          <h2>Location: {eventData?.location}</h2>
+        </>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

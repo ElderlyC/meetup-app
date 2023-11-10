@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import MeetupLink from "../Components/MeetupLink";
 import classes from "./MeetupsListPage.module.css";
+import GreenLinkButton from "../Components/GreenLinkButton/GreenLinkButton";
 
 function MeetupsListPage() {
   const [events, setEvents] = useState([]);
-
-  // should only show the events that you are the host of (check localStorage) !!!
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    const hostedArray = JSON.parse(localStorage.getItem("host")) || [];
     fetch("https://meetup-mannaja-default-rtdb.firebaseio.com/meetups.json")
       .then((response) => response.json())
       .then((data) => {
-        setEvents(data);
+        const hostedEvents = Object.keys(data)
+          .filter((key) => hostedArray.includes(key))
+          .map((key) => data[key]);
+        setEvents(hostedEvents);
+        setLoaded(true);
       });
   }, []);
 
@@ -43,10 +47,10 @@ function MeetupsListPage() {
             ))}
         </tbody>
       </table>
+      {loaded && !events.length > 0 && <p>You have no hosted events!</p>}
+      {!loaded && <p>Loading Events...</p>}
 
-      <button>
-        <Link to="/">Organize a NEW Meetup!</Link>
-      </button>
+      <GreenLinkButton url="/" pageName="Organize a NEW Meetup!" />
     </div>
   );
 }

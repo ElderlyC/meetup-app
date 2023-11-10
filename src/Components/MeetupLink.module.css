@@ -14,6 +14,10 @@
   display: flex;
 }
 
+.tools .expandbtn {
+  padding: 0px;
+}
+
 .expand,
 .delete {
   margin: 0;
@@ -24,5 +28,5 @@
 }
 
 .delete:hover {
-  filter: hue-rotate(-30deg);
+  filter: hue-rotate(-50deg);
 }

@@ -38,7 +38,7 @@ const MeetupLink = ({ link, event }) => {
       <td className={classes.meetupDay}>{event.meetupDay}</td>
       <td className={classes.status}>Upcoming</td>
       <td className={classes.tools}>
-        <button onClick={handleExpand}>
+        <button className={classes.expandbtn} onClick={handleExpand}>
           <img className={classes.expand} src={expand} alt="expand" />
         </button>
         <button onClick={handleEventDelete}>
