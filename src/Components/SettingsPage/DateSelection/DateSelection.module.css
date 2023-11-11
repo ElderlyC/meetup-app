@@ -22,6 +22,14 @@
   font-size: 1.3rem;
 }
 
+.warning {
+  color: red;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+}
+
 @media (max-width: 600px) {
   .legend {
     font-size: 1rem;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import GreenLinkButton from "../../GreenLinkButton/GreenLinkButton";
 import DateSelection from "../DateSelection/DateSelection";
 import { getDatesInRange } from "../../SharedFunctions";
@@ -12,20 +12,23 @@ const SettingsForm = ({
   tableDates,
   host,
   userInfo,
+  eventData,
 }) => {
-  const [blur, setBlur] = useState(false);
-
   const handleTitleInputChange = (e) => {
     onTitleChange(e.target.value);
   };
 
   const sendTableData = () => {
-    // send all data, link, etc to firebase
-    const dateArray = getDatesInRange(
-      tableDates.start,
-      tableDates.end,
-      tableDates.type
-    );
+    const datesUnchanged =
+      eventData && tableDates
+        ? Object.keys(tableDates).every(
+            (key) => tableDates[key] === eventData.tableDates[key]
+          )
+        : false;
+    const dateArray =
+      eventData && datesUnchanged
+        ? eventData.dateArray
+        : getDatesInRange(tableDates.start, tableDates.end, tableDates.type);
 
     const data = {
       host,
@@ -49,25 +52,24 @@ const SettingsForm = ({
         },
         body: JSON.stringify(data),
       }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        // Server responds with {name: randomId}
-        console.log("SENT! Response from server:", data);
-      })
-      .catch((error) => {
-        console.error("Error sending POST request:", error);
-      });
+    );
+
     const hostedArray = JSON.parse(localStorage.getItem("host")) || [];
-    hostedArray.push(link);
+    if (!hostedArray.includes(link)) {
+      hostedArray.push(link);
+    }
     localStorage.setItem("host", JSON.stringify(hostedArray));
   };
 
-  const handleBlur = () => {
-    if (title !== "") {
-      setBlur(true);
+  useEffect(() => {
+    if (eventData) {
+      document.getElementById("startTime").value = eventData.startTime;
+      document.getElementById("location").value = eventData.location;
+      document.getElementById("description").value = eventData.description;
     }
-  };
+  }, [eventData]);
+
+  const dates = eventData?.tableDates;
 
   return (
     <>
@@ -78,8 +80,6 @@ const SettingsForm = ({
             id="title"
             onChange={handleTitleInputChange}
             value={title}
-            onBlur={handleBlur}
-            disabled={blur}
             autoFocus
             required
           />
@@ -94,7 +94,7 @@ const SettingsForm = ({
           <input id="location" placeholder="e.g. Jon's House" />
         </div>
         <div className={classes.dates}>
-          <DateSelection onDateChange={onDateChange} />
+          <DateSelection onDateChange={onDateChange} dates={dates} />
         </div>
 
         <div className={classes.pair}>

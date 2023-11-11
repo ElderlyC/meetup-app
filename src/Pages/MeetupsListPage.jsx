@@ -12,10 +12,14 @@ function MeetupsListPage() {
     fetch("https://meetup-mannaja-default-rtdb.firebaseio.com/meetups.json")
       .then((response) => response.json())
       .then((data) => {
-        const hostedEvents = Object.keys(data)
-          .filter((key) => hostedArray.includes(key))
-          .map((key) => data[key]);
-        setEvents(hostedEvents);
+        const hostedEvents =
+          data &&
+          Object.keys(data)
+            .filter((key) => hostedArray.includes(key))
+            .map((key) => ({
+              [key]: data[key],
+            }));
+        setEvents(hostedEvents || []);
         setLoaded(true);
       });
   }, []);
@@ -37,14 +41,17 @@ function MeetupsListPage() {
         </thead>
         <tbody>
           {events &&
-            Object.keys(events).map((event) => (
-              <MeetupLink
-                key={event}
-                link={event}
-                event={events[event]}
-                className={classes.links}
-              />
-            ))}
+            events.map((eventEntry) => {
+              const [eventLink, eventData] = Object.entries(eventEntry)[0];
+              return (
+                <MeetupLink
+                  key={eventLink}
+                  link={eventLink}
+                  event={eventData}
+                  className={classes.links}
+                />
+              );
+            })}
         </tbody>
       </table>
       {loaded && !events.length > 0 && <p>You have no hosted events!</p>}

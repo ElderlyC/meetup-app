@@ -74,7 +74,9 @@ function TablePage() {
                   <DateTable eventData={eventData} link={link} />
                 </div>
                 <div className={classes.col3}>
-                  {isHost && <SettingsButton className={classes.settings} />}
+                  {isHost && (
+                    <SettingsButton className={classes.settings} link={link} />
+                  )}
                   <MeetupDay eventData={eventData} link={link} />
                   <MembersList eventData={eventData} />
                 </div>

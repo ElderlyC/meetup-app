@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import classes from "./UserInvite.module.css";
 
-const UserInvite = ({ title, saveLink }) => {
+const UserInvite = ({ title, saveLink, eventURL }) => {
   const [link, setLink] = useState("");
   const [randomNumber, setRandomNumber] = useState(0);
 
   const input = document.getElementById("link");
-
   const handleCopy = () => {
     if (title) {
-      const fixedlink = link.replaceAll(" ", "%20");
+      const fixedlink = eventURL
+        ? eventURL.replaceAll(" ", "%20")
+        : link.replaceAll(" ", "%20");
       navigator.clipboard.writeText(
         "https://elderlyc.github.io/meetup-app/#/" + fixedlink
       );
@@ -18,7 +19,7 @@ const UserInvite = ({ title, saveLink }) => {
   };
 
   const handleMouseHover = () => {
-    input.value = link;
+    input.value = eventURL || link;
   };
 
   const handleMouseLeave = () => {
@@ -27,14 +28,14 @@ const UserInvite = ({ title, saveLink }) => {
   };
 
   useEffect(() => {
+    setRandomNumber(Math.floor(Math.random() * 10000));
+  }, []);
+
+  useEffect(() => {
     const newLink = title + randomNumber || randomNumber;
     setLink(newLink);
     saveLink(newLink);
   }, [title, randomNumber, saveLink]);
-
-  useEffect(() => {
-    setRandomNumber(Math.floor(Math.random() * 10000));
-  }, []);
 
   return (
     <div>

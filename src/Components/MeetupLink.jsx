@@ -14,7 +14,9 @@ const MeetupLink = ({ link, event }) => {
     fetch(databaseURL, {
       method: "DELETE",
     }).then(() => {
-      window.location.reload();
+      if (window.confirm("refresh?")) {
+        window.location.reload();
+      }
     });
 
     const hosting = JSON.parse(localStorage.getItem("host"));
@@ -24,6 +26,7 @@ const MeetupLink = ({ link, event }) => {
   };
 
   const handleExpand = () => {
+    //expand to show attendees for the event for the meetup date, description
     console.log("drop it like its hot", event);
   };
 

@@ -4,6 +4,7 @@ import classes from "./MeetupDay.module.css";
 const MeetupDay = ({ eventData, link }) => {
   const [mostAttendeesDate, setMaxDate] = useState();
   const [bestDayVoters, setVoters] = useState();
+  const [meetupDay, setMeetupDay] = useState(eventData.meetupDay);
 
   useEffect(() => {
     if (eventData?.dateArray) {
@@ -22,31 +23,33 @@ const MeetupDay = ({ eventData, link }) => {
           setVoters();
         }
       }
+      const formattedMaxDate =
+        mostAttendeesDate &&
+        new Date(mostAttendeesDate).toLocaleDateString(undefined, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      setMeetupDay(formattedMaxDate || "No attendees yet!");
     }
-  }, [eventData]);
-
-  const meetupDay = mostAttendeesDate
-    ? new Date(mostAttendeesDate).toLocaleDateString(undefined, {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      })
-    : "No attendees yet!";
+  }, [eventData, mostAttendeesDate]);
 
   useEffect(() => {
-    fetch(
-      "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
-        link +
-        "/meetupDay.json",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(meetupDay),
-      }
-    );
-  }, [link, meetupDay]);
+    if (eventData) {
+      fetch(
+        "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+          link +
+          "/meetupDay.json",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(meetupDay),
+        }
+      );
+    }
+  }, [link, meetupDay, eventData]);
 
   return (
     <div className={classes.container}>

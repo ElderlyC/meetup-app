@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import classes from "./DateSelection.module.css";
 
-const DateSelection = ({ onDateChange }) => {
+const DateSelection = ({ onDateChange, dates }) => {
   const today = new Date();
   const todayFormatted = today.toISOString().split("T")[0];
 
@@ -53,6 +53,12 @@ const DateSelection = ({ onDateChange }) => {
     }
   }, [dateRange, onDateChange, firstMondayFormatted]);
 
+  useEffect(() => {
+    if (dates) {
+      setDateRange({ type: dates.type, start: dates.start, end: dates.end });
+    }
+  }, [dates]);
+
   return (
     <fieldset className={classes.field}>
       <legend className={classes.legend}>
@@ -61,6 +67,7 @@ const DateSelection = ({ onDateChange }) => {
       <div>
         <label>Selection Type</label>
         <select
+          id="type"
           value={dateRange.type}
           onChange={(event) => handleDateChange("type", event.target.value)}
         >
@@ -74,6 +81,7 @@ const DateSelection = ({ onDateChange }) => {
       <div>
         <label>Start of Range</label>
         <input
+          id="start"
           type="date"
           value={dateRange.start}
           onChange={(event) => handleDateChange("start", event.target.value)}
@@ -84,6 +92,7 @@ const DateSelection = ({ onDateChange }) => {
       <div>
         <label>End of Range</label>
         <input
+          id="end"
           type="date"
           value={dateRange.end}
           onChange={(event) => handleDateChange("end", event.target.value)}
@@ -91,6 +100,11 @@ const DateSelection = ({ onDateChange }) => {
           max={getNDaysLater(firstMondayFormatted, 27)}
         />
       </div>
+      {dates && (
+        <p className={classes.warning}>
+          ! Making changes to dates will reset votes on the table !
+        </p>
+      )}
     </fieldset>
   );
 };

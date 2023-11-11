@@ -59,14 +59,7 @@ const DateButton = ({ date, index, selected, link, members }) => {
         },
         body: JSON.stringify(updatedDateArray),
       }
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        //console.log("SENT! Response from server:", data);
-      })
-      .catch((error) => {
-        console.error("Error sending POST request:", error);
-      });
+    );
   };
 
   const dateObject = selected.find((obj) => obj.hasOwnProperty(date));

@@ -11,7 +11,7 @@ function App() {
       <header className="App-header">
         <Routes>
           <Route path="/" element={<HostMeetupPage />} />
-          <Route path="/Meetup-Settings" element={<MeetupSettingsPage />} />
+          <Route path="/Meetup-Settings/*" element={<MeetupSettingsPage />} />
           <Route path="/:eventId" element={<TablePage />} />
           <Route path="/Meetups-List" element={<MeetupsListPage />} />
         </Routes>
