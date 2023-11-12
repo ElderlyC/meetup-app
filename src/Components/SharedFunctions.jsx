@@ -32,3 +32,34 @@ export function getDatesInRange(startDate, endDate, type) {
 
   return dates;
 }
+
+export function formatDate(date) {
+  return new Date(date).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+export function addMember(eventData, link, userData) {
+  const memberList = eventData.members;
+  return fetch(
+    "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
+      link +
+      "/members.json",
+    {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify([
+        ...memberList,
+        {
+          name: userData.name,
+          icon: userData.icon,
+          colour: userData.colour,
+        },
+      ]),
+    }
+  );
+}

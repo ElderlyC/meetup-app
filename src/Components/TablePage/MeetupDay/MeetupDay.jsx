@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { formatDate } from "../../SharedFunctions";
 import classes from "./MeetupDay.module.css";
 
 const MeetupDay = ({ eventData, link }) => {
   const [mostAttendeesDate, setMaxDate] = useState();
   const [bestDayVoters, setVoters] = useState();
-  const [meetupDay, setMeetupDay] = useState(eventData.meetupDay);
+  const [meetupDay, setMeetupDay] = useState(eventData?.meetupDay);
 
   useEffect(() => {
     if (eventData?.dateArray) {
@@ -23,19 +24,15 @@ const MeetupDay = ({ eventData, link }) => {
           setVoters();
         }
       }
-      const formattedMaxDate =
-        mostAttendeesDate &&
-        new Date(mostAttendeesDate).toLocaleDateString(undefined, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        });
-      setMeetupDay(formattedMaxDate || "No attendees yet!");
+
+      setMeetupDay(mostAttendeesDate || "No attendees yet!");
     }
   }, [eventData, mostAttendeesDate]);
 
+  const formattedMaxDate = mostAttendeesDate && formatDate(mostAttendeesDate);
+
   useEffect(() => {
-    if (eventData) {
+    if (eventData && meetupDay) {
       fetch(
         "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
           link +
@@ -54,7 +51,7 @@ const MeetupDay = ({ eventData, link }) => {
   return (
     <div className={classes.container}>
       Meetup Day:
-      <p className={classes.meetDay}>{meetupDay}</p>
+      <p className={classes.meetDay}>{formattedMaxDate}</p>
       <p className={classes.label}>
         (The earliest date with the most number of votes)
       </p>

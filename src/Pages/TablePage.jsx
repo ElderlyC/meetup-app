@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { addMember } from "../Components/SharedFunctions";
 import { useParams } from "react-router-dom";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
@@ -23,6 +24,17 @@ function TablePage() {
 
   const isHost = localStorage.getItem("host")?.includes(link) || null;
   const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    if (userInfo && eventData) {
+      const existingMember = eventData.members.find(
+        (member) => member.name === userInfo.name
+      );
+      if (!existingMember) {
+        addMember(eventData, link, userInfo);
+      }
+    }
+  }, [eventData, link, userInfo]);
 
   useEffect(() => {
     const firebaseConfig = {

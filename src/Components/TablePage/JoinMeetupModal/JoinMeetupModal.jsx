@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addMember } from "../../SharedFunctions";
 import UserIdentifiers from "../../UserIdentifiers/UserIdentifiers";
 import classes from "./JoinMeetupModal.module.css";
 import GreenLinkButton from "../../GreenLinkButton/GreenLinkButton";
@@ -20,26 +21,7 @@ function JoinMeetupModal({ eventData, link }) {
       if (!existingMember) {
         localStorage.setItem("userInfo", JSON.stringify(userData));
 
-        const memberList = eventData.members;
-        fetch(
-          "https://meetup-mannaja-default-rtdb.firebaseio.com/meetups/" +
-            link +
-            "/members.json",
-          {
-            method: "PUT",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify([
-              ...memberList,
-              {
-                name: userData.name,
-                icon: userData.icon,
-                colour: userData.colour,
-              },
-            ]),
-          }
-        )
+        addMember(eventData, link, userData)
           .then((response) => response.json())
           .then((data) => {
             console.log("SENT! Response from server:", data);
@@ -49,7 +31,6 @@ function JoinMeetupModal({ eventData, link }) {
             console.error("Error sending POST request:", error);
           });
       } else {
-        console.log("exisitng member", existingMember);
         localStorage.setItem("userInfo", JSON.stringify(existingMember));
         window.location.reload();
       }
@@ -58,7 +39,6 @@ function JoinMeetupModal({ eventData, link }) {
 
   return (
     <div className={classes.container}>
-      JoinMeetupModal{" "}
       <p>
         You are invited to Join <b>{eventData?.title} </b>
         by host <b>{eventData?.host}</b>!

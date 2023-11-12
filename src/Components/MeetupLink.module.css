@@ -30,3 +30,15 @@
 .delete:hover {
   filter: hue-rotate(-50deg);
 }
+
+.attendees,
+.description {
+  font-size: 1.5rem;
+  text-align: left;
+  border: 1px solid deepskyblue;
+}
+
+.attendees {
+  color: lime;
+  font-weight: bold;
+}
