@@ -30,6 +30,9 @@ const SettingsForm = ({
         ? eventData.dateArray
         : getDatesInRange(tableDates.start, tableDates.end, tableDates.type);
 
+    const members = eventData
+      ? [...eventData.members]
+      : [{ name: host, icon: userInfo.icon, colour: userInfo.colour }];
     const data = {
       host,
       title,
@@ -38,7 +41,7 @@ const SettingsForm = ({
       startTime: document.getElementById("startTime").value,
       location: document.getElementById("location").value,
       description: document.getElementById("description").value,
-      members: [{ name: host, icon: userInfo.icon, colour: userInfo.colour }],
+      members,
     };
 
     fetch(
@@ -98,7 +101,7 @@ const SettingsForm = ({
         </div>
 
         <div className={classes.pair}>
-          <label>Description</label>
+          <label className={classes.descLabel}>Description</label>
           <textarea
             id="description"
             placeholder="Activities, what to bring, other specific details about the meetup, etc."

@@ -51,17 +51,16 @@ const MeetupDay = ({ eventData, link }) => {
   return (
     <div className={classes.container}>
       Meetup Day:
-      <p className={classes.meetDay}>{formattedMaxDate}</p>
+      <p className={classes.meetDay}>
+        {formattedMaxDate || "No attendees yet!"}
+      </p>
       <p className={classes.label}>
         (The earliest date with the most number of votes)
       </p>
-      <p className={classes.votes}>
-        Votes: {bestDayVoters?.length}
-        {bestDayVoters &&
-          bestDayVoters.map((voter) => {
-            return <li key={voter}>{voter}</li>;
-          })}
-      </p>
+      <div className={classes.votes}>
+        <p>Votes: {bestDayVoters?.length}</p>
+        {bestDayVoters && <p>{bestDayVoters.join(", ")}</p>}
+      </div>
     </div>
   );
 };

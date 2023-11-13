@@ -32,3 +32,34 @@ td {
 .table a:hover {
   color: rgb(255, 145, 0);
 }
+
+@media (max-width: 1280px) {
+  .status,
+  .startTime,
+  .host {
+    display: none;
+  }
+
+  td {
+    padding: 5px 10px;
+    margin: 3px;
+  }
+}
+
+@media (max-width: 720px) {
+  .container {
+    font-size: 1rem;
+  }
+
+  .container h1 {
+    font-size: 3rem;
+  }
+
+  th {
+    padding: 2px;
+  }
+
+  td {
+    padding: 2px;
+  }
+}

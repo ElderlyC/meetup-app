@@ -1,12 +1,9 @@
 .tableButton {
   width: 11%; /* Adjust the button width as needed */
-  height: 90px; /* Adjust the button height as needed */
-  font-size: 20px; /* Adjust font size as needed */
+  max-height: 90px; /* Adjust the button height as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
   font-weight: bold;
   position: relative;
-  /* new */
-  /*   */
-  /* color: #fff; */
   padding: 10px;
   border: none;
   cursor: pointer;
@@ -19,13 +16,13 @@
   border: 0px;
   width: 11%; /* Adjust the button width as needed */
   height: 40px; /* Adjust the button height as needed */
-  font-size: 25px; /* Adjust font size as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
   font-weight: bold;
   margin-top: 25px;
 }
 
 .monthLabel {
-  font-size: 16px;
+  font-size: 1rem;
   position: absolute;
   top: -20px; /* Adjust the distance from the button */
   left: 50%; /* Center horizontally */
@@ -80,4 +77,43 @@
   display: flex;
   align-items: center;
   margin-right: 5px;
+}
+
+@media (max-width: 700px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .tableButton-container {
+    max-width: 650px;
+  }
+
+  .tableButton,
+  .dayHeader {
+    padding: 0;
+    height: 5vh;
+    width: 11vw;
+    font-size: 1rem;
+    margin: 5px;
+  }
+  .dayHeader {
+    max-width: 360px;
+  }
+  .tableButton p {
+    margin: 0;
+  }
+
+  .monthLabel {
+    font-size: 0.7rem;
+    top: -12px;
+  }
+
+  .attendees {
+    font-size: 0.6rem;
+    bottom: -1px;
+  }
 }

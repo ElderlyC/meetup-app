@@ -26,7 +26,7 @@ function MeetupsListPage() {
 
   return (
     <div className={classes.container}>
-      <h1>Meetup List - WORK IN PROGRESS</h1>
+      <h1>Meetup List</h1>
       <table className={classes.table}>
         <thead>
           <tr className={classes.headers}>
@@ -56,8 +56,9 @@ function MeetupsListPage() {
       </table>
       {loaded && !events.length > 0 && <p>You have no hosted events!</p>}
       {!loaded && <p>Loading Events...</p>}
-
-      <GreenLinkButton url="/" pageName="Organize a NEW Meetup!" />
+      <div className={classes.newButton}>
+        <GreenLinkButton url="/" pageName="Organize a NEW Meetup!" />
+      </div>
     </div>
   );
 }

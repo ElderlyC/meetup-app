@@ -20,13 +20,17 @@ function HostMeetupPage() {
 
   const handleInfoSave = () => {
     setClicked(true);
-    console.log("Set storage with userData", userData);
     localStorage.setItem("userInfo", JSON.stringify(userData));
   };
 
   return (
     <div className={classes.container}>
-      <p className={classes.title}>Host your Meetup</p>
+      <h1 className={classes.title}>Host your Meetup</h1>
+      {inputsEmpty && clicked && (
+        <p className={classes.error}>
+          Remember to input both a name and a title!
+        </p>
+      )}
       <UserIdentifiers onChangeData={handleDataChange} titleDisabled={false} />
       <GreenLinkButton
         url="/Meetup-Settings"
@@ -37,11 +41,6 @@ function HostMeetupPage() {
       <div style={{ marginTop: "-10px" }}>
         <MeetupsListButton />
       </div>
-      {inputsEmpty && clicked && (
-        <p className={classes.error}>
-          Remember to input both a name and a title!
-        </p>
-      )}
     </div>
   );
 }

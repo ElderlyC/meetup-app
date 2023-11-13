@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { formatDate } from "./SharedFunctions";
+import { formatDate, getToday } from "./SharedFunctions";
 import { Link } from "react-router-dom";
 import expand from "../images/expand.png";
 import deleteIcon from "../images/delete.png";
@@ -8,8 +8,12 @@ import classes from "./MeetupLink.module.css";
 const MeetupLink = ({ link, event }) => {
   const [expanded, setExpand] = useState(false);
 
-  const formattedDate = event && formatDate(event.meetupDay);
-  const today = new Date().toISOString().split("T")[0];
+  const formattedDate =
+    event && formatDate(event.meetupDay) !== "Invalid Date"
+      ? formatDate(event.meetupDay)
+      : "No attendees yet!";
+
+  const today = getToday();
   const status =
     event.meetupDay > today
       ? "Upcoming"
@@ -18,11 +22,11 @@ const MeetupLink = ({ link, event }) => {
       : "Passed";
 
   const attendeesArray =
-    (event &&
-      event.dateArray
-        .find((dateObject) => Object.keys(dateObject)[0] === event.meetupDay)
-        [event.meetupDay].attendees.slice(1)) ||
-    [];
+    event && event.meetupDay.length !== 17
+      ? event.dateArray
+          .find((dateObject) => Object.keys(dateObject)[0] === event.meetupDay)
+          [event.meetupDay].attendees.slice(1)
+      : [];
 
   const handleEventDelete = () => {
     if (window.confirm("Are you sure you wish to delete this event?")) {
@@ -68,14 +72,23 @@ const MeetupLink = ({ link, event }) => {
       {expanded && (
         <>
           <tr className={classes.attendees}>
-            <td colSpan="7">
-              Attendees:{" "}
-              <span className={classes.names}>{attendeesArray.join(" ")}</span>
+            <td colSpan="1" className={classes.subtitle}>
+              Attendees:
+            </td>
+            <td colSpan="6" className={classes.names}>
+              {attendeesArray.join(", ") || ""}
             </td>
           </tr>
-          <tr className={classes.description}>
-            <td colSpan="7">Description: {event.description}</td>
-          </tr>
+          {event.description && (
+            <tr className={classes.descBox}>
+              <td colSpan="1" className={classes.subtitle}>
+                Description:
+              </td>
+              <td colSpan="6" className={classes.description}>
+                {event.description}
+              </td>
+            </tr>
+          )}
         </>
       )}
     </>

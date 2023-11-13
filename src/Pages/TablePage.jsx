@@ -20,7 +20,9 @@ function TablePage() {
 
   const [eventData, setEventData] = useState();
 
-  const [userInfo] = useState(JSON.parse(localStorage.getItem("userInfo")));
+  const [userInfo, setUserInfo] = useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
 
   const isHost = localStorage.getItem("host")?.includes(link) || null;
   const [loaded, setLoaded] = useState(false);
@@ -30,11 +32,14 @@ function TablePage() {
       const existingMember = eventData.members.find(
         (member) => member.name === userInfo.name
       );
-      if (!existingMember) {
+      if (!existingMember && !isHost) {
         addMember(eventData, link, userInfo);
+      } else if (!existingMember && isHost) {
+        localStorage.setItem("userInfo", JSON.stringify(eventData.members[0]));
+        setUserInfo(eventData.members[0]);
       }
     }
-  }, [eventData, link, userInfo]);
+  }, [eventData, link, userInfo, isHost]);
 
   useEffect(() => {
     const firebaseConfig = {
@@ -74,30 +79,36 @@ function TablePage() {
             />
           )}
           {userInfo && (
-            <div>
-              <div className={classes.container}>
-                <div className={classes.col1}>
-                  <UserInfo data={userInfo} />
+            <div className={classes.container}>
+              <div className={classes.col1}>
+                <UserInfo data={userInfo} />
+                <div>
                   <ChangeUser />
                   <MeetupsListButton />
                 </div>
-                <div className={classes.col2}>
-                  <TableHeader eventData={eventData} />
-                  <DateTable eventData={eventData} link={link} />
-                </div>
-                <div className={classes.col3}>
-                  {isHost && (
-                    <SettingsButton className={classes.settings} link={link} />
-                  )}
-                  <MeetupDay eventData={eventData} link={link} />
-                  <MembersList eventData={eventData} />
+              </div>
+              <div className={classes.col2}>
+                <TableHeader eventData={eventData} />
+                <DateTable eventData={eventData} link={link} />
+                {eventData && (
+                  <div className={classes.description}>
+                    <p>{eventData.description}</p>
+                  </div>
+                )}
+              </div>
+              <div className={classes.col3}>
+                {isHost && (
+                  <SettingsButton className={classes.settings} link={link} />
+                )}
+                <div className={classes.meetInfo}>
+                  <div className={classes.meetDay}>
+                    <MeetupDay eventData={eventData} link={link} />
+                  </div>
+                  <div className={classes.list}>
+                    <MembersList eventData={eventData} />
+                  </div>
                 </div>
               </div>
-              {eventData && (
-                <div className={classes.description}>
-                  <p>{eventData.description}</p>
-                </div>
-              )}
             </div>
           )}
         </div>

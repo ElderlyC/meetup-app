@@ -1,0 +1,38 @@
+.button {
+  display: flex;
+  align-items: center;
+  max-width: 200px;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 2rem;
+  font-weight: 550;
+  transition: background-color 0.3s ease; /* Smooth color transition on hover */
+  text-decoration: none;
+}
+
+.link {
+  color: #fff;
+  margin-left: 10px;
+}
+
+.cog {
+  width: 50px;
+  height: 50px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.link:hover {
+  color: rgb(81, 67, 201);
+}
+
+@media (min-width: 1200px) {
+  .button {
+    margin-right: 70px;
+  }
+}

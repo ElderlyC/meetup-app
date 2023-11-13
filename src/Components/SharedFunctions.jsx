@@ -63,3 +63,7 @@ export function addMember(eventData, link, userData) {
     }
   );
 }
+
+export function getToday() {
+  return new Date().toLocaleDateString("ja-JP").replaceAll("/", "-");
+}

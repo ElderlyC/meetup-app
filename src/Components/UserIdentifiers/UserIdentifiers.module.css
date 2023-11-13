@@ -3,9 +3,8 @@
   margin: 15px 10px;
   width: 35%;
   max-width: 300px;
-  font-size: 1vw;
+  font-size: 1rem;
   padding: 10px;
-  /* margin: 10px 0; */
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
@@ -43,6 +42,23 @@
   color: rgb(252, 6, 6);
 }
 
+.selectors button:hover {
+  background-color: white;
+}
+
+.selectors button:active {
+  background-color: black;
+}
+
 button {
   margin: 10px;
+}
+
+@media (max-width: 600px) {
+  .name,
+  .title {
+    font-size: 1rem;
+    width: 46%;
+    margin: 5px;
+  }
 }

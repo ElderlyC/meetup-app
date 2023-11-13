@@ -1,21 +1,40 @@
 .container {
-  margin: 60px 0px;
+  margin: 0px;
   width: 80%;
 }
 
 .meetDay {
   margin: 5px;
   border: 2px dotted white;
+  font-weight: bold;
+  color: rgb(44, 236, 44);
+  font-size: larger;
+  padding: 5px;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 1rem;
 }
 
 .votes {
   padding: 5px;
-  font-size: 20px;
+  font-size: 1.2rem;
   list-style: none; /* Remove bullet points */
   margin: 0px;
   border: 2px dotted white;
+}
+
+.votes p {
+  margin: 5px;
+}
+
+@media (max-width: 700px) {
+  .meetDay {
+    font-size: 1.5rem;
+    padding: 3px;
+  }
+  .label,
+  .votes {
+    font-size: 0.8rem;
+  }
 }

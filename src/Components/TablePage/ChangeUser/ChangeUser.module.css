@@ -11,7 +11,6 @@
   text-decoration: none; /* Remove underlines for links */
   text-align: center;
   transition: background-color 0.3s ease; /* Smooth color transition on hover */
-  margin-bottom: 0px; /* Add more styles as needed */
 }
 
 /* Hover effect */
@@ -23,4 +22,10 @@
 .link {
   color: #fff;
   text-decoration: none; /* Remove underlines for links */
+}
+
+@media (min-width: 1200px) {
+  .change {
+    margin-bottom: 0;
+  }
 }

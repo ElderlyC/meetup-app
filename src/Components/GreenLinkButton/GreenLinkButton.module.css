@@ -24,3 +24,9 @@
 .link:hover {
   color: rgb(131, 1, 182);
 }
+
+@media (max-width: 720px) {
+  .big-green-button {
+    font-size: 1.3rem;
+  }
+}

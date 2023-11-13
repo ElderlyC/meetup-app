@@ -31,14 +31,53 @@
   filter: hue-rotate(-50deg);
 }
 
+.expand:hover {
+  filter: hue-rotate(50deg);
+}
+
 .attendees,
-.description {
+.descBox {
   font-size: 1.5rem;
-  text-align: left;
   border: 1px solid deepskyblue;
+}
+
+.names,
+.description {
+  text-align: left;
+  font-weight: bold;
 }
 
 .attendees {
   color: lime;
-  font-weight: bold;
+}
+
+.descBox {
+  color: orange;
+}
+
+.subtitle {
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .status,
+  .startTime,
+  .host {
+    display: none;
+  }
+
+  .attendees,
+  .descBox {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .tools {
+    max-width: 60px;
+  }
+  .attendees,
+  .descBox {
+    font-size: 0.8rem;
+  }
 }

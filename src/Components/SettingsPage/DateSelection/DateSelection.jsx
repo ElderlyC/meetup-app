@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { getToday } from "../../SharedFunctions";
 import classes from "./DateSelection.module.css";
 
 const DateSelection = ({ onDateChange, dates }) => {
-  const today = new Date();
-  const todayFormatted = today.toISOString().split("T")[0];
-
+  const todayFormatted = getToday();
   const getNDaysLater = (dateInput, days) => {
     const nDaysLater = new Date(dateInput); // Create a Date object from dateRange.start
     nDaysLater.setDate(nDaysLater.getDate() + days); // Add 1 day to the date

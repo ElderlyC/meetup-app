@@ -13,7 +13,9 @@ const MembersList = ({ eventData }) => {
         {memberListArray?.map((member) => {
           return (
             <div key={member.name} className={classes.member}>
-              <Icon data={member} />
+              <div className={classes.icon}>
+                <Icon data={member} />
+              </div>
               <li style={{ color: member.colour }}>{member.name}</li>
             </div>
           );

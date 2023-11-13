@@ -1,5 +1,6 @@
 .header h1 {
-  font-size: 50px;
+  color: rgb(255, 94, 0);
+  font-size: 5rem;
   margin: 20px;
 }
 
@@ -7,4 +8,10 @@
   font-size: 25px;
   font-weight: normal;
   margin: 5px;
+}
+
+@media (max-width: 1200px) {
+  .header h1 {
+    font-size: 3rem;
+  }
 }

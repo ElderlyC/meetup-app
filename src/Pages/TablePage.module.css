@@ -4,7 +4,7 @@
 }
 
 .col1 {
-  margin: 0 20px 0 5%;
+  margin: 0 20px 0 20px;
   min-width: 20%;
   position: relative;
   top: -80px;
@@ -12,12 +12,17 @@
   flex-direction: column;
   align-items: center;
 }
+
 .col2 {
   margin: 20px;
-  min-width: 45%;
+  min-width: 620px;
 }
+
 .col3 {
-  margin: 0 20px 0 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 20px 0 20px;
   min-width: 20%;
 }
 
@@ -25,7 +30,83 @@
   width: 100%;
 }
 
+.meetInfo {
+  margin-top: 60px;
+}
+
+.meetDay {
+  margin-bottom: 20px;
+}
+
+.list {
+  max-height: 330px;
+  max-width: 270px;
+  overflow-y: auto;
+}
+
 .description {
   margin-top: 20px;
-  color: white;
+  color: orange;
+  font-weight: bold;
+}
+
+.list::-webkit-scrollbar {
+  width: 3px; /* Set the width of the scrollbar */
+}
+
+.list::-webkit-scrollbar-thumb {
+  background-color: rgb(25, 106, 173);
+}
+
+.list::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .col1,
+  .meetInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .col2 {
+    min-width: 100%;
+  }
+
+  .col3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .col2 {
+    margin: 0;
+  }
+  .meetInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin: 5px;
+  }
+
+  .meetDay,
+  .list {
+    flex: 1;
+    margin-bottom: 10px;
+  }
+
+  .list {
+    display: flex;
+    justify-content: center;
+  }
 }

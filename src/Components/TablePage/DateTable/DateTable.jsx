@@ -28,7 +28,7 @@ const DateTable = ({ eventData, link }) => {
   const dayHeaders = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
 
   return (
-    <div>
+    <div className={classes.container}>
       {eventData ? (
         <>
           <div>
