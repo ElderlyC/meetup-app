@@ -45,7 +45,7 @@
 }
 
 .tableButton:hover {
-  background-color: #2980b9;
+  background-color: #3090cf;
 }
 
 /* Styling for the tooltip */
@@ -55,8 +55,8 @@
   color: #fff;
   padding: 5px;
   border-radius: 5px;
-  top: 60px; /* Adjust the distance from the button */
-  left: 50%; /* Center horizontally */
+  top: 0; /* Adjust the distance from the button */
+  left: -100%; /* Center horizontally */
   transform: translateX(-50%); /* Center horizontally */
   display: none;
   z-index: 1;
@@ -65,8 +65,12 @@
   margin: 0px;
 }
 
-.tableButton-container:hover .tooltip {
+.tableButton:hover .tooltip {
   display: block;
+}
+
+.tableButton-container:active .tooltip {
+  display: none;
 }
 
 .list {
@@ -86,6 +90,18 @@
     justify-content: center;
     align-items: center;
     max-width: 100%;
+  }
+
+  .tableButton-container:hover .tooltip {
+    display: none;
+  }
+
+  .tableButton-container:active .tooltip {
+    background-color: white;
+  }
+
+  .tableButton:hover {
+    background-color: white;
   }
 
   .tableButton-container {
