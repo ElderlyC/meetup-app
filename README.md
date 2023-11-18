@@ -20,25 +20,25 @@ Towards the end of development careful attention to CSS, and in particular respo
 
 Making carefully thought out wireframes early on proved exceptionally useful later, as I was able to build a working application exactly as I had envisioned.
 
-![HostScreen](./src/images/wireframes/InitialScreen.png) ![HostScreenshot](./src/images/screenshots/hostpage.png)
+### Hosting page
 
-### Initial hosting page
-
-![SettingPage](./src/images/wireframes/SettingPage.png) ![SettingsScreenshot](./src/images/screenshots/settingspage.png)
+![HostScreen](./src/images/wireframes/InitialScreen.PNG) ![HostScreenshot](./src/images/screenshots/hostpage.PNG)
 
 ### Settings page
 
-![JoinScreen](./src/images/wireframes/JoinScreen.png) ![JoinmodalScreenshot](./src/images/screenshots/joinmodal.png)
+![SettingPage](./src/images/wireframes/SettingPage.PNG) ![SettingsScreenshot](./src/images/screenshots/settingspage.PNG)
 
 ### Join modal
 
-![TablePage](./src/images/wireframes/TablePage.png) ![TableScreenshot](./src/images/screenshots/tablepage.png)
+![JoinScreen](./src/images/wireframes/JoinScreen.png) ![JoinmodalScreenshot](./src/images/screenshots/joinmodal.PNG)
 
 ### Shared table page
 
-![MeetupsListPage](./src/images/wireframes/MeetupsListPage.png) ![MeetupsListScreenshot](./src/images/screenshots/meetupslistpage.png)
+![TablePage](./src/images/wireframes/TablePage.png) ![TableScreenshot](./src/images/screenshots/tablepage.PNG)
 
 ### Meetups list page
+
+![MeetupsListPage](./src/images/wireframes/MeetupsListPage.png) ![MeetupsListScreenshot](./src/images/screenshots/meetupslistpage.PNG)
 
 I hope to continue to make applications that I can proudly use myself as I know that others will find them useful too.
 
