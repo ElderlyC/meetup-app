@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+# Meetup Mannaja - Event Organisation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### _Collaborate in realtime with friends!_
 
-## Available Scripts
+Try out this project here: https://elderlyc.github.io/meetup-app
 
-In the project directory, you can run:
+## Introduction
 
-### `npm start`
+Meetup Mannaja was a way for me to expand upon my skills and knowledge within the realm of front-end web development.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+I planned out a project that involved a backend (Firebase) to enable realtime updating of shared data amongst multiple users.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+I was able to utilise various features that I had studied to bring my idea to fruition.
 
-### `npm test`
+Routing, API calls, JSON manipulation, localStorage, state, hooks, and side effects were all used within the app to allow it to function effectively.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Towards the end of development careful attention to CSS, and in particular responsiveness, was given to ensure a smooth and effective UI experience.
 
-### `npm run build`
+## Wireframes to Pages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Making carefully thought out wireframes early on proved exceptionally useful later, as I was able to build a working application exactly as I had envisioned.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![HostScreen](./src/images/wireframes/InitialScreen.png) ![HostScreenshot](./src/images/screenshots/hostpage.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Initial hosting page
 
-### `npm run eject`
+![SettingPage](./src/images/wireframes/SettingPage.png) ![SettingsScreenshot](./src/images/screenshots/settingspage.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Settings page
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![JoinScreen](./src/images/wireframes/JoinScreen.png) ![JoinmodalScreenshot](./src/images/screenshots/joinmodal.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Join modal
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![TablePage](./src/images/wireframes/TablePage.png) ![TableScreenshot](./src/images/screenshots/tablepage.png)
 
-## Learn More
+### Shared table page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![MeetupsListPage](./src/images/wireframes/MeetupsListPage.png) ![MeetupsListScreenshot](./src/images/screenshots/meetupslistpage.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Meetups list page
 
-### Code Splitting
+I hope to continue to make applications that I can proudly use myself as I know that others will find them useful too.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## The Programmer
 
-### Analyzing the Bundle Size
+Hi. I study programming by myself through online resources and am looking for a web development job. I have experience with React (JS, HTML, CSS), Git, and Firebase, and am studying TypeScript and Node.js.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+I am always striving to learn about the seemingly endless world of programming, and try to program every day.
 
-### Making a Progressive Web App
+## My Other Projects
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Although not as polished, I still proudly use my first project _**kiloJoules**_ from time to time when I need a random recipe or am curious about food macros.
 
-### Advanced Configuration
+You can try it out here: https://elderlyc.github.io/fitness-app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Special Thanks
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+To Mike, Baker, Jon, Jose, Joel, and Benji for giving me ideas and helping test out my application.
