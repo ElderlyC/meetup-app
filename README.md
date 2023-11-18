@@ -19,6 +19,7 @@ Towards the end of development careful attention to CSS, and in particular respo
 ## Wireframes to Pages
 
 Making carefully thought out wireframes early on proved exceptionally useful later, as I was able to build a working application exactly as I had envisioned.
+See how my wireframes created using skribbl.io and paint compare to screenshots of my application (dark grey background).
 
 ### Hosting page
 
